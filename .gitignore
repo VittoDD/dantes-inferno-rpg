@@ -1,0 +1,13 @@
+# IntelliJ configuration files
+.idea/
+*.iml
+out/
+target/
+build/
+
+# Gradle temporary files
+.gradle/
+
+# System temporary files
+.DS_Store
+Thumbs.db

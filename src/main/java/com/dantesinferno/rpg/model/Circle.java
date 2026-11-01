@@ -2,11 +2,12 @@ package com.dantesinferno.rpg.model;
 
 /**
  * Represents a Circle of Hell in the Dante's Inferno RPG.
- * Each circle has a number, a name, a description, a difficulty level
- * and Virgilio'squote acting as a hint for the player
+ * Each circle has a number, a name, a description, a difficulty level,
+ * a Virgilio's quote acting as a hint for the player and the secret target
+ * object to find.
  *
  * @author Vittoria Di Domizio
- * @version 1.1
+ * @version 1.2
  */
 
 public class Circle {
@@ -15,6 +16,7 @@ public class Circle {
     private final String description;
     private final int dangerLevel;
     private final String virgilioQuote;
+    private final String targetObject;
 
     /**
      * Constructs a new Circle of Hell.
@@ -24,14 +26,17 @@ public class Circle {
      * @param description A brief description of the environment or punished sin
      * @param dangerLevel The scaling difficulty level for encounters in this circle
      * @param virgilioQuote Virgilio's hint for this level
+     * @param targetObject The mysterious object the player must find
      */
 
-    public Circle(int number, String name, String description, int dangerLevel, String virgilioQuote) {
+    public Circle(int number, String name, String description, int dangerLevel, String virgilioQuote,
+                  String targetObject) {
         this.number = number;
         this.name = name;
         this.description = description;
         this.dangerLevel = dangerLevel;
         this.virgilioQuote = virgilioQuote;
+        this.targetObject = targetObject;
     }
 
     //getter method
@@ -55,8 +60,13 @@ public class Circle {
         return virgilioQuote;
     }
 
+    public String getTargetObject(){
+        return targetObject;
+    }
+
     @Override
     public String toString() {
-        return "Circle " + number + ": " + name + " | Hint: \"" + virgilioQuote + "\"";
+        return "Circle " + number + ": " + name +
+                " | Hint: \"" + virgilioQuote + "\" | Target: " + targetObject;
     }
 }

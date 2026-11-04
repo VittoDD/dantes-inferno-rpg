@@ -9,12 +9,13 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import com.dantesinferno.rpg.manager.GameManager;
 import com.dantesinferno.rpg.model.Circle;
+import javafx.scene.control.Button;
 
 /**
  * Main JavaFX application entry point for the Dante's Inferno RPG.
  *
  * @author Vittoria Di Domizio
- * @version 1.2
+ * @version 1.3
  */
 
 public class MainApp extends Application{
@@ -51,8 +52,28 @@ public class MainApp extends Application{
         quoteLabel.setStyle("-fx-text-fill: #ffd166; -fx-font-size: 13px; -fx-font-style: italic; -fx-wrap-text: true;");
         quoteLabel.setMaxWidth(400);
 
-        statusLabel = new Label("Cerca l'oggetto nascosto!");
+        statusLabel = new Label("Clicca sul pulsante per interagire con l'ambiente!");
         statusLabel.setStyle("-fx-text-fill: #4ecdc4; -fx-font-size: 14px;");
+
+        //interactive action button
+        Button actionButton = new Button("Trova Oggetto (Avanza Livello)");
+        actionButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white; -fx-font-size: 14px;");
+
+        actionButton.setOnAction(e -> {
+            boolean hit = gameManager.checkClickCoordinates(0.0, 0.0);
+            if (hit) {
+                if (!gameManager.isGameCompleted()) {
+                    gameManager.nextLevel();
+                    updateUI();
+                    if (gameManager.isGameCompleted()) {
+                        statusLabel.setText("Hai completato tutti i 9 Cerchi dell'Inferno!");
+                        actionButton.setDisable(true);
+                    } else {
+                        statusLabel.setText("Complimenti! Sei passato al livello successivo.");
+                    }
+                }
+            }
+        });
 
         root.getChildren().addAll(levelTitleLabel, levelDescLabel, quoteLabel, statusLabel);
 

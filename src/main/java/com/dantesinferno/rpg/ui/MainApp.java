@@ -10,20 +10,18 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import com.dantesinferno.rpg.manager.GameManager;
 import com.dantesinferno.rpg.model.Circle;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 
 /**
  * Main JavaFX application entry point for the Dante's Inferno RPG.
  *
  * @author Vittoria Di Domizio
- * @version 2.0
+ * @version 2.1
  */
 
 public class MainApp extends Application{
 
-    private Label levelTitleLabel;
-    private Label levelDescLabel;
+    private Label headerTitleLabel;
     private Label quoteLabel;
     private Label statusLabel;
     private GameManager gameManager;
@@ -36,12 +34,12 @@ public class MainApp extends Application{
 
         primaryStage.setTitle("Dante's Inferno RPG");
 
-        //root layout setup
+        //root layout -> BorderPane with global dark background theme
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: #121212;");
 
-        //TOP: Header Bar (Level and Name of the Circle)
-        Label headerTitleLabel = new Label ("LEVEL 1 - LIMBO");
+        //TOP: Header Bar -> Level Number and Circle Name
+        headerTitleLabel = new Label ();
         headerTitleLabel.setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 16px; -fx-font-weight: bold;");
 
         StackPane headerPane = new StackPane(headerTitleLabel);
@@ -49,46 +47,10 @@ public class MainApp extends Application{
         headerPane.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #333333; -fx-border-width: 0 0 1 0;");
         root.setTop(headerPane);
 
-        // UI Labels setup
-        levelTitleLabel = new Label("Livello 1: Limbo");
-        levelTitleLabel.setStyle("-fx-text-fill: #ff6b6b; -fx-font-size: 24px; -fx-font-weight: bold;");
-
-        levelDescLabel = new Label("Descrizione del livello...");
-        levelDescLabel.setStyle("-fx-text-fill: #cccccc; -fx-font-size: 14px; -fx-wrap-text: true;");
-        levelDescLabel.setMaxWidth(400);
-
-        quoteLabel = new Label("Citazione di Virgilio...");
-        quoteLabel.setStyle("-fx-text-fill: #ffd166; -fx-font-size: 13px; -fx-font-style: italic; -fx-wrap-text: true;");
-        quoteLabel.setMaxWidth(400);
-
-        statusLabel = new Label("Clicca sul pulsante per interagire con l'ambiente!");
-        statusLabel.setStyle("-fx-text-fill: #4ecdc4; -fx-font-size: 14px;");
-
-        //interactive action button
-        Button actionButton = new Button("Trova Oggetto (Avanza Livello)");
-        actionButton.setStyle("-fx-background-color: #333333; -fx-text-fill: white; -fx-font-size: 14px;");
-
-        actionButton.setOnAction(e -> {
-            boolean hit = gameManager.checkClickCoordinates(0.0, 0.0);
-            if (hit) {
-                if (!gameManager.isGameCompleted()) {
-                    gameManager.nextLevel();
-                    updateUI();
-                    if (gameManager.isGameCompleted()) {
-                        statusLabel.setText("Hai completato tutti i 9 Cerchi dell'Inferno!");
-                        actionButton.setDisable(true);
-                    } else {
-                        statusLabel.setText("Complimenti! Sei passato al livello successivo.");
-                    }
-                }
-            }
-        });
-
-        root.getChildren().addAll(levelTitleLabel, levelDescLabel, quoteLabel, statusLabel);
-
-        //Load initial level data from backend using updateUI
+        //Initialize dynamic UI components based on the starting level (Limbo)
         updateUI();
 
+        //Scene and window configuration
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setScene(scene);
 
@@ -97,15 +59,13 @@ public class MainApp extends Application{
         primaryStage.show();
     }
 
-    /**
-     * Updates UI components with the current Circle state from GameManager.
-     */
+
+     //Updates UI components by retrieving the current Circle state from the GameManager
+
     private void updateUI() {
         Circle current = gameManager.getCurrentLevel();
         if (current != null) {
-            levelTitleLabel.setText("Livello " + gameManager.getCurrentLevelNumber() + ": " + current.getName());
-            levelDescLabel.setText("Descrizione: " + current.getDescription());
-            quoteLabel.setText("Virgilio dice: \"" + current.getVirgilioQuote() + "\"");
+            headerTitleLabel.setText("LEVEL " + gameManager.getCurrentLevelNumber() + ": " + current.getName().toUpperCase());
         }
     }
 

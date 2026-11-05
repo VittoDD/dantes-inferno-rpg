@@ -56,8 +56,8 @@ public class MainApp extends Application{
         centerInteractiveArea.setStyle("-fx-background-color: #181818;");
 
         backgroundImageView = new ImageView();
-        backgroundImageView.setFitHeight(300);
-        backgroundImageView.setFitWidth(700);
+        backgroundImageView.setFitHeight(260);
+        backgroundImageView.setFitWidth(600);
         backgroundImageView.setPreserveRatio(true);
 
         // Securely load the Limbo background asset from resources directory
@@ -67,8 +67,6 @@ public class MainApp extends Application{
         } catch (Exception e) {
             System.err.println("Failed to load Limbo background image: " + e.getMessage());
         }
-
-        centerInteractiveArea.getChildren().add(backgroundImageView);
 
         //Mouse click event listener for direct environment interaction
         centerInteractiveArea.setOnMouseClicked(event -> {
@@ -92,6 +90,7 @@ public class MainApp extends Application{
             }
         });
 
+        centerInteractiveArea.getChildren().add(backgroundImageView);
         root.setCenter(centerInteractiveArea);
 
         //BOTTOM: Narrative card -> Virgilio's quote and Status Feedback

@@ -90,6 +90,21 @@ public class MainApp extends Application{
 
         root.setCenter(centerInteractiveArea);
 
+        //BOTTOM: Narrative card -> Virgilio's quote and Status Feedback
+        VBox bottomCard = new VBox(8);
+        bottomCard.setPadding(new Insets(15));
+        bottomCard.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #333333; -fx-border-width: 1 0 0 0;");
+        bottomCard.setAlignment(Pos.CENTER_LEFT);
+
+        quoteLabel = new Label();
+        quoteLabel.setStyle("-fx-text-fill: #ffd166; -fx-font-size: 13px; -fx-font-style: italic; -fx-wrap-text: true;");
+
+        statusLabel = new Label();
+        statusLabel.setStyle("-fx-text-fill: #4ecdc4; -fx-font-size: 12px;");
+
+        bottomCard.getChildren().addAll(quoteLabel, statusLabel);
+        root.setBottom(bottomCard);
+
         //Initialize dynamic UI components based on the starting level (Limbo)
         updateUI();
 
@@ -109,6 +124,8 @@ public class MainApp extends Application{
         Circle current = gameManager.getCurrentLevel();
         if (current != null) {
             headerTitleLabel.setText("LEVEL " + gameManager.getCurrentLevelNumber() + ": " + current.getName().toUpperCase());
+            quoteLabel.setText("Virgil: \"" + current.getVirgilioQuote() + "\"");
+            statusLabel.setText("Observe the environment and click on the mystery object");
         }
     }
 

@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import com.dantesinferno.rpg.manager.GameManager;
 import com.dantesinferno.rpg.model.Circle;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 /**
  * Main JavaFX application entry point for the Dante's Inferno RPG.
@@ -25,6 +27,8 @@ public class MainApp extends Application{
     private Label quoteLabel;
     private Label statusLabel;
     private GameManager gameManager;
+    private StackPane centerArea;
+    private ImageView backgroundImageView;
 
     @Override
     public void start(Stage primaryStage) {
@@ -46,6 +50,26 @@ public class MainApp extends Application{
         headerPane.setPadding(new Insets(15));
         headerPane.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #333333; -fx-border-width: 0 0 1 0;");
         root.setTop(headerPane);
+
+        //CENTER: Visual Area -> Circle Background Asset
+        centerArea = new StackPane();
+        centerArea.setStyle("-fx-background-color: #181818;");
+
+        backgroundImageView = new ImageView();
+        backgroundImageView.setFitHeight(300);
+        backgroundImageView.setFitWidth(700);
+        backgroundImageView.setPreserveRatio(true);
+
+        // Securely load the Limbo background asset from resources directory
+        try {
+            Image limboImage = new Image(getClass().getResourceAsStream("/images/limbo.jpg"));
+            backgroundImageView.setImage(limboImage);
+        } catch (Exception e) {
+            System.err.println("Failed to load Limbo background image: " + e.getMessage());
+        }
+
+        centerArea.getChildren().add(backgroundImageView);
+        root.setCenter(centerArea);
 
         //Initialize dynamic UI components based on the starting level (Limbo)
         updateUI();

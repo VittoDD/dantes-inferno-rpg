@@ -2,6 +2,7 @@ package com.dantesinferno.rpg.ui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
@@ -38,6 +39,15 @@ public class MainApp extends Application{
         //root layout setup
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: #121212;");
+
+        //TOP: Header Bar (Level and Name of the Circle)
+        Label headerTitleLabel = new Label ("LEVEL 1 - LIMBO");
+        headerTitleLabel.setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 16px; -fx-font-weight: bold;");
+
+        StackPane headerPane = new StackPane(headerTitleLabel);
+        headerPane.setPadding(new Insets(15));
+        headerPane.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #333333; -fx-border-width: 0 0 1 0;");
+        root.setTop(headerPane);
 
         // UI Labels setup
         levelTitleLabel = new Label("Livello 1: Limbo");

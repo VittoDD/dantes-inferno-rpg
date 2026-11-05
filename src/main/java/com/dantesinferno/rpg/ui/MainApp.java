@@ -27,7 +27,7 @@ public class MainApp extends Application{
     private Label quoteLabel;
     private Label statusLabel;
     private GameManager gameManager;
-    private StackPane centerArea;
+    private StackPane centerInteractiveArea;
     private ImageView backgroundImageView;
 
     @Override
@@ -52,8 +52,8 @@ public class MainApp extends Application{
         root.setTop(headerPane);
 
         //CENTER: Visual Area -> Circle Background Asset
-        centerArea = new StackPane();
-        centerArea.setStyle("-fx-background-color: #181818;");
+        centerInteractiveArea = new StackPane();
+        centerInteractiveArea.setStyle("-fx-background-color: #181818;");
 
         backgroundImageView = new ImageView();
         backgroundImageView.setFitHeight(300);
@@ -68,8 +68,27 @@ public class MainApp extends Application{
             System.err.println("Failed to load Limbo background image: " + e.getMessage());
         }
 
-        centerArea.getChildren().add(backgroundImageView);
-        root.setCenter(centerArea);
+        centerInteractiveArea.getChildren().add(backgroundImageView);
+
+        //Mouse click event listener for direct environment interaction
+        centerInteractiveArea.setOnMouseClicked(event -> {
+            double clickX = event.getX();
+            double clickY = event.getY();
+
+            //verify click coordinates against the backend hitboxes
+            boolean hit = gameManager.checkClickCoordinates(clickX, clickY);
+            if(hit) {
+                if (!gameManager.isGameCompleted()) {
+                    //go to the next level
+                } else {
+                    //keep searching
+                }
+            } else {
+                //the player must try again
+            }
+        });
+
+        root.setCenter(centerInteractiveArea);
 
         //Initialize dynamic UI components based on the starting level (Limbo)
         updateUI();

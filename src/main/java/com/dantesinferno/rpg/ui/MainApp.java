@@ -10,12 +10,13 @@ import javafx.scene.control.Label;
 import com.dantesinferno.rpg.manager.GameManager;
 import com.dantesinferno.rpg.model.Circle;
 import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 
 /**
  * Main JavaFX application entry point for the Dante's Inferno RPG.
  *
  * @author Vittoria Di Domizio
- * @version 1.3
+ * @version 2.0
  */
 
 public class MainApp extends Application{
@@ -35,10 +36,8 @@ public class MainApp extends Application{
         primaryStage.setTitle("Dante's Inferno RPG");
 
         //root layout setup
-        VBox root = new VBox();
-        root.setPadding(new Insets(20));
-        root.setAlignment(Pos.CENTER);
-        root.setStyle("-fx-background-color: #1a1a1a;");
+        BorderPane root = new BorderPane();
+        root.setStyle("-fx-background-color: #121212;");
 
         // UI Labels setup
         levelTitleLabel = new Label("Livello 1: Limbo");

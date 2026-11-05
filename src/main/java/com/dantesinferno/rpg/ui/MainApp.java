@@ -80,11 +80,15 @@ public class MainApp extends Application{
             if(hit) {
                 if (!gameManager.isGameCompleted()) {
                     //go to the next level
+                    gameManager.nextLevel();
+                    updateUI();
+                    statusLabel.setText("Object found! Descending to the next Circle...");
                 } else {
-                    //keep searching
+                    statusLabel.setText("You have successfully completed Dante's Inferno! Congrats!");
                 }
             } else {
                 //the player must try again
+                statusLabel.setText("Nothing here... Search deeper in the shadows...");
             }
         });
 

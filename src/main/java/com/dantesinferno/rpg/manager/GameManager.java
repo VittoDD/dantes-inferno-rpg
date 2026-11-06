@@ -38,24 +38,26 @@ public class GameManager {
     }
 
     /**
-     * Verifies if a user's mouse click coordinates hit the hidden target object of the current level.
-     * Uses Euclidean distance calculation: sqrt((x2-x1)^2 + (y2-y1)^2) <= radius.
+     * Checks if the clicked coordinates (X, Y) fall inside the target hitbox
+     * for the current level (Limbo: the map held by the foreground figures).
      *
-     * @param clickX The X coordinate of the mouse click
-     * @param clickY The Y coordinate of the mouse click
-     * @return true if the click is within the target object's radius, false otherwise
+     * @param x Click X coordinate relative to the ImageView
+     * @param y Click Y coordinate relative to the ImageView
+     * @return true if the click hits the target, false otherwise
      */
-    public boolean checkClickCoordinates(double clickX, double clickY) {
-        Circle current = getCurrentLevel();
-        if (current == null) {
-            return false;
+    public boolean checkClickCoordinates(double x, double y) {
+        // Current level 1 (Limbo) hitbox boundaries
+        if (currentLevelIndex == 0) {
+            double minX = 240.0;
+            double maxX = 290.0;
+            double minY = 170.0;
+            double maxY = 220.0;
+
+            return (x >= minX && x <= maxX && y >= minY && y <= maxY);
         }
 
-        double deltaX = clickX - current.getTargetX();
-        double deltaY = clickY - current.getTargetY();
-        double distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-        return distance <= current.getTargetRadius();
+        // Future levels will be handled here...
+        return false;
     }
 
     /**

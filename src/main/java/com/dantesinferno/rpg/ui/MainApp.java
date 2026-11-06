@@ -73,6 +73,9 @@ public class MainApp extends Application{
             double clickX = event.getX();
             double clickY = event.getY();
 
+            //print the click's coordinates
+            System.out.println("DEBUG CLICK -> X = " + clickX + " Y = " + clickY);
+
             //verify click coordinates against the backend hitboxes
             boolean hit = gameManager.checkClickCoordinates(clickX, clickY);
             if(hit) {

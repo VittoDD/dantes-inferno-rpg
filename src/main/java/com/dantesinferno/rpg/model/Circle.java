@@ -99,9 +99,20 @@ public class Circle {
         return maxY;
     }
 
+    /**
+     * Checks if given click coordinates fall inside this circle's active hitbox.
+     *
+     * @param x Click X coordinate relative to the image
+     * @param y Click Y coordinate relative to the image
+     * @return true if the click is within boundaries
+     */
+    public boolean contains(double x, double y) {
+        return (x >= minX && x <= maxX && y >= minY && y <= maxY);
+    }
+
     @Override
     public String toString() {
-        return "Circle " + number + ": " + name + " | Target: " + targetObject;
-
+        return "Circle " + number + ": " + name + " | Target: " + targetObject +
+                " | Hitbox X:[" + minX + "-" + maxX + "] Y:[" + minY + "-" + maxY + "]";
     }
 }

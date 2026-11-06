@@ -2,11 +2,10 @@ package com.dantesinferno.rpg.model;
 
 /**
  * Represents a Circle of Hell in the Dante's Inferno RPG.
- * Each circle contains environmental details, Virgilio's hint, the target object,
- * and its 2D coordinates with hit tolerance.
+ * Encapsulates narrative data, asset paths and interactive hitbox boundaries.
  *
  * @author Vittoria Di Domizio
- * @version 1.3
+ * @version 1.5
  */
 
 public class Circle {
@@ -16,9 +15,13 @@ public class Circle {
     private final int dangerLevel;
     private final String virgilioQuote;
     private final String targetObject;
-    private final double targetX;
-    private final double targetY;
-    private final double targetRadius;
+    private final String imagePath;
+
+    //hitbox boundaries (Rectangle)
+    private final double minX;
+    private final double maxX;
+    private final double minY;
+    private final double maxY;
 
     /**
      * Constructs a new Circle of Hell.
@@ -29,22 +32,26 @@ public class Circle {
      * @param dangerLevel The scaling difficulty level for encounters in this circle
      * @param virgilioQuote Virgilio's hint for this level
      * @param targetObject The mysterious object the player must find
-     * @param targetX       The X-coordinate of the target object center
-     * @param targetY       The Y-coordinate of the target object center
-     * @param targetRadius  The click tolerance radius in pixels
+     * @param imagePath     The resource path for the background image
+     * @param minX          Minimum X boundary for the target hitbox
+     * @param maxX          Maximum X boundary for the target hitbox
+     * @param minY          Minimum Y boundary for the target hitbox
+     * @param maxY          Maximum Y boundary for the target hitbox
      */
 
     public Circle(int number, String name, String description, int dangerLevel, String virgilioQuote,
-                  String targetObject, double targetX, double targetY, double targetRadius) {
+                  String targetObject, String imagePath, double minX, double maxX, double minY, double maxY) {
         this.number = number;
         this.name = name;
         this.description = description;
         this.dangerLevel = dangerLevel;
         this.virgilioQuote = virgilioQuote;
         this.targetObject = targetObject;
-        this.targetX = targetX;
-        this.targetY = targetY;
-        this.targetRadius = targetRadius;
+        this.imagePath = imagePath;
+        this.minX = minX;
+        this.maxX = maxX;
+        this.minY = minY;
+        this.maxY = maxY;
     }
 
     //getter methods
@@ -72,21 +79,29 @@ public class Circle {
         return targetObject;
     }
 
-    public double getTargetX() {
-        return targetX;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public double getTargetY() {
-        return targetY;
+    public double getMinX() {
+        return minX;
     }
 
-    public double getTargetRadius() {
-        return targetRadius;
+    public double getMaxX() {
+        return maxX;
+    }
+
+    public double getMinY() {
+        return minY;
+    }
+
+    public double getMaxY() {
+        return maxY;
     }
 
     @Override
     public String toString() {
-        return "Circle " + number + ": " + name + " | Target: " + targetObject +
-                " at (" + targetX + ", " + targetY + ") radius: " + targetRadius;
+        return "Circle " + number + ": " + name + " | Target: " + targetObject;
+
     }
 }

@@ -14,6 +14,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
+import java.util.Objects;
+
 /**
  * Main JavaFX application entry point for the Dante's Inferno RPG.
  *
@@ -59,14 +61,6 @@ public class MainApp extends Application{
         backgroundImageView.setFitHeight(260);
         backgroundImageView.setFitWidth(600);
         backgroundImageView.setPreserveRatio(true);
-
-        // Securely load the Limbo background asset from resources directory
-        try {
-            Image limboImage = new Image(getClass().getResourceAsStream("/images/limbo.jpg"));
-            backgroundImageView.setImage(limboImage);
-        } catch (Exception e) {
-            System.err.println("Failed to load Limbo background image: " + e.getMessage());
-        }
 
         //Mouse click event listener for direct environment interaction
         centerInteractiveArea.setOnMouseClicked(event -> {
@@ -123,7 +117,6 @@ public class MainApp extends Application{
         primaryStage.show();
     }
 
-
      //Updates UI components by retrieving the current Circle state from the GameManager
 
     private void updateUI() {
@@ -132,6 +125,16 @@ public class MainApp extends Application{
             headerTitleLabel.setText("LEVEL " + gameManager.getCurrentLevelNumber() + ": " + current.getName().toUpperCase());
             quoteLabel.setText("Virgil: \"" + current.getVirgilioQuote() + "\"");
             statusLabel.setText("Observe the environment and click on the mystery object");
+        }
+
+        //dinamically load the background image for the current circle
+        try{
+            assert current != null;
+            String imagePath = current.getImagePath();
+            Image bgImage = new Image(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
+            backgroundImageView.setImage(bgImage);
+        } catch(Exception e) {
+            System.out.println("Failed to load background image for " + current.getName());
         }
     }
 

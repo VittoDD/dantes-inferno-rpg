@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
     id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
@@ -24,6 +25,10 @@ dependencies {
 javafx {
     version = '21'
     modules = ['javafx.controls', 'javafx.fxml']
+}
+
+application {
+    mainClass = 'com.dantesinferno.rpg.ui.MainLauncher'
 }
 
 test {

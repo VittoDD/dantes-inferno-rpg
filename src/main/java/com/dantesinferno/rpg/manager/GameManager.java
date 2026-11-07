@@ -39,24 +39,18 @@ public class GameManager {
 
     /**
      * Checks if the clicked coordinates (X, Y) fall inside the target hitbox
-     * for the current level (Limbo: the map held by the foreground figures).
+     * for the current Circle of Hell.
      *
      * @param x Click X coordinate relative to the ImageView
      * @param y Click Y coordinate relative to the ImageView
      * @return true if the click hits the target, false otherwise
      */
+
     public boolean checkClickCoordinates(double x, double y) {
-        // Current level 1 (Limbo) hitbox boundaries
-        if (currentLevelIndex == 0) {
-            double minX = 240.0;
-            double maxX = 290.0;
-            double minY = 170.0;
-            double maxY = 220.0;
-
-            return (x >= minX && x <= maxX && y >= minY && y <= maxY);
+        Circle currentCircle = getCurrentLevel();
+        if (currentCircle!=null){
+            return currentCircle.contains(x, y);
         }
-
-        // Future levels will be handled here...
         return false;
     }
 

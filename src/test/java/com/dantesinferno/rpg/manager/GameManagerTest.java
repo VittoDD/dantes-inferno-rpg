@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * and 2D coordinate click hit-detection.
  *
  * @author Vittoria Di Domizio
- * @version 1.0
+ * @version 1.1
  */
 
 public class GameManagerTest {
@@ -30,10 +30,12 @@ public class GameManagerTest {
 
     @Test
     public void testClickInsideTargetRadius() {
-        // Since placeholder coordinates are (0.0, 0.0) with radius 50.0:
-        // A click at (30.0, 40.0) has a distance of sqrt(30^2 + 40^2) = 50.0, which is <= 50.0
-        boolean hit = gameManager.checkClickCoordinates(30.0, 40.0);
-        assertTrue(hit, "Click within the target radius should be successful");
+        // GameManager automatically loads LevelData starting at index 0 (Limbo).
+        // Limbo's hitbox boundaries in LevelData are: X: [240.0, 290.0], Y: [170.0, 220.0].
+        // A click at (260.0, 195.0) falls directly inside these boundaries.
+        boolean hit = gameManager.checkClickCoordinates(260.0, 195.0);
+
+        assertTrue(hit, "Click within the target hitbox boundaries should be successful");
     }
 
     @Test

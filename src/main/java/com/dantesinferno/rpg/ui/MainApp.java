@@ -20,7 +20,7 @@ import java.util.Objects;
  * Main JavaFX application entry point for the Dante's Inferno RPG.
  *
  * @author Vittoria Di Domizio
- * @version 2.1
+ * @version 2.2
  */
 
 public class MainApp extends Application{

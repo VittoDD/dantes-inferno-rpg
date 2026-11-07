@@ -73,7 +73,7 @@ public class MainApp extends Application{
             //verify click coordinates against the backend hitboxes
             boolean hit = gameManager.checkClickCoordinates(clickX, clickY);
             if(hit) {
-                if (!gameManager.isGameCompleted()) {
+                if (gameManager.getCurrentLevelNumber()<9) {
                     //go to the next level
                     gameManager.nextLevel();
                     updateUI();

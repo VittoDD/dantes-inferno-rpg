@@ -33,43 +33,44 @@ public class LevelData {
         circles.add(new Circle(2, "Lust", "Trapped in a violent, unending storm.", 2,
                 "Dove il vento soffia implacabile e i cuori si sfiorano in eterno, " +
                         "riposa il pegno di un amore perduto.",
-                "Broken Medallion", "/images/lust.jpg", 0.0, 0.0, 0.0, 0.0));
+                "Broken Medallion", "/images/lust.jpg", 120.0, 170.0, 80.0, 130.0));
 
         circles.add(new Circle(3, "Gluttony", "Wallowing in foul, freezing rain and mud.",
                 3, "Sotto la pioggia fangosa e l'insaziabile pianto, " +
                 "brilla ciò che non può mai essere colmato.",
-                "Muddy Silver Chalice", "/images/gluttony.jpg", 0.0, 0.0, 0.0, 0.0));
+                "Muddy Silver Chalice", "/images/gluttony.jpg",
+                123.0, 173.0, 121.0, 171.0));
 
         circles.add(new Circle(4, "Greed", "Pushing heavy weights in eternal opposition.",
                 4, "Chi accumula e chi disperde si scontra senza sosta; " +
                 "cerca il metallo che appesantisce l'anima.", "Heavy Gold Pouch",
-                "/images/greed.jpg", 0.0, 0.0, 0.0, 0.0));
+                "/images/greed.jpg", 321.0, 371.0, 64.0, 114.0));
 
         circles.add(new Circle(5, "Wrath", "Fighting eternally in the murky waters of the Styx.",
                 5, "Nelle torbide acque dello Stige, dove il fango ribolle di rabbia cieca, " +
                 "si cela un ferro conteso.", "Broken Sword Hilt",
-                "/images/wrath.jpg", 0.0, 0.0, 0.0, 0.0));
+                "/images/wrath.jpg", 127.0, 177.0, 87.0, 137.0));
 
         circles.add(new Circle(6, "Heresy", "Trapped inside burning tombs for eternity.",
                 6, "Tra i sepolcri infuocati dove l'orgoglio terreno non si spegne mai,"
                 + "cerca il metallo sigillato che porta il segno di un sangue fiero",
                 "Signet ring", "/images/heresy.jpg",
-                0.0, 50.0, 0.0, 0.0));
+                327.0, 377.0, 136.0, 186.0));
 
         circles.add(new Circle(7, "Violence", "Submerged in a river of boiling blood.",
                 7, "Lungo il fiume di sangue bollente e tra i rami che gemono dolore, " +
                 "si nasconde il segno della violenza.", "Bloody Thorn",
-                "/images/violence.jpg", 0.0, 0.0, 0.0, 0.0));
+                "/images/violence.jpg", 379.0, 429.0, 183.0, 233.0));
 
         circles.add(new Circle(8, "Fraud", "Divided into Malebolge with various torments.",
                 8, "Nei fossi profondi delle Malebolge, dove l'inganno tesse la sua tela, " +
                 "trova ciò che apre porte proibite.", "False Key",
-                "/images/fraud.jpg", 0.0, 0.0, 0.0, 0.0));
+                "/images/fraud.jpg", 396.0, 446.0, 193.0, 243.0));
 
         circles.add(new Circle(9, "Treachery", "Frozen in the icy expanse of Lake Cocytus.",
                 9, "Dove il ghiaccio stringe i cuori senza pietà, cerca l'acciaio freddo" +
                 "che trafisse la fiducia", "Sword in the ice", "/images/treachery.jpg",
-                0.0, 0.0, 0.0, 0.0));
+                217.0, 267.0, 81.0, 131.0));
 
         return circles;
     }

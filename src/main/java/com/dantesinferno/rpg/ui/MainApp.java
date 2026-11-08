@@ -90,7 +90,23 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createGameRoot());
         });
 
-        root.getChildren().addAll(titleLabel, startButton);
+        //Insertion and positioning of Virgilio's Avatar
+        ImageView virgilioAvatar = new ImageView();
+        try{
+            Image virgilioImg =
+                    new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/virgilio-avatar.png")));
+            virgilioAvatar.setImage(virgilioImg);
+            virgilioAvatar.setFitHeight(140);
+            virgilioAvatar.setFitWidth(140);
+            virgilioAvatar.setPreserveRatio(true);
+        } catch (Exception e){
+            System.out.println("Virgilio's avatar not found");
+        }
+
+        virgilioAvatar.setLayoutX(70);
+        virgilioAvatar.setLayoutY(250);
+
+        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar);
 
         return root;
     }

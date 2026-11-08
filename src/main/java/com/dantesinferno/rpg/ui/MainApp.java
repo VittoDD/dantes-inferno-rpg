@@ -52,7 +52,7 @@ public class MainApp extends Application{
         AnchorPane root = new AnchorPane();
         root.setPrefSize(600,400);
 
-        //Upload background scene
+        //Upload background scene -> Hell's Door
         try {
             Image bgImage =
                     new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/start-scene.jpg")));
@@ -70,12 +70,12 @@ public class MainApp extends Application{
                 root.setStyle("-fx-background-color: #121212;");
         }
 
-        VBox contentBox = new VBox(15);
-        contentBox.setAlignment(Pos.CENTER);
-        contentBox.setPadding(new Insets(40));
-
+        //Title moved to the top center
         Label titleLabel = new Label("DANTE'S INFERNO");
-        titleLabel.setStyle("-fx-text-fill: #ffd166; -fx-font-size: 24px; -fx-font-weight: bold;");
+        titleLabel.setStyle("-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold; " +
+                "-fx-font-style: italic; -fx-effect: dropshadow(gaussian, black, 8, 0.9, 0, 2)");
+        titleLabel.setLayoutX(165);
+        titleLabel.setLayoutY(10);
 
         Button startButton = new Button("Start journey");
         startButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
@@ -86,8 +86,7 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createGameRoot());
         });
 
-        contentBox.getChildren().addAll(titleLabel, startButton);
-        //root.setCenter(contentBox);
+        root.getChildren().addAll(titleLabel, startButton);
 
         return root;
     }

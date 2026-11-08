@@ -47,8 +47,10 @@ public class MainApp extends Application{
     /**
      * Creates the start screen layout (Base Version)
      */
-    private BorderPane createStartRoot(){
-        BorderPane root = new BorderPane();
+    private Pane createStartRoot(){
+        //Use of AnchorPane to position elements freely and with precision
+        AnchorPane root = new AnchorPane();
+        root.setPrefSize(600,400);
 
         //Upload background scene
         try {
@@ -85,7 +87,7 @@ public class MainApp extends Application{
         });
 
         contentBox.getChildren().addAll(titleLabel, startButton);
-        root.setCenter(contentBox);
+        //root.setCenter(contentBox);
 
         return root;
     }

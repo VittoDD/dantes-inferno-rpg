@@ -106,7 +106,22 @@ public class MainApp extends Application{
         virgilioAvatar.setLayoutX(70);
         virgilioAvatar.setLayoutY(250);
 
-        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar);
+        //box for Virgilio's speech
+        VBox speechBubble = new VBox(3);
+        speechBubble.setPadding(new Insets(6, 10, 6, 10));
+        speechBubble.setStyle("-fx-background-color: rgba(240, 240, 240, 0.65); -fx-border-color: #ffd166;" +
+                "-fx-border-width: 1px; -fx-background-radius: 6px; -fx-border-radius: 6px;");
+        Label speechLabel = new Label("\"Ond’io per lo tuo me’ penso e discerno\n" +
+                "che tu mi segui, e io sarò tua guida,\n" +
+                "e trarrotti di qui per loco etterno...\"");
+        speechLabel.setStyle("-fx-text-fill: #1a1a1a; -fx-font-size: 10px; -fx-font-style: italic;");
+
+        speechBubble.getChildren().add(speechLabel);
+
+        speechBubble.setLayoutX(150);
+        speechBubble.setLayoutY(325);
+
+        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble);
 
         return root;
     }

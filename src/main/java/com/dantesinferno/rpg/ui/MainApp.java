@@ -76,6 +76,39 @@ public class MainApp extends Application{
     }
 
     /**
+     * Creates the end screen layout (base version)
+     */
+    private BorderPane createEndRoot(){
+        BorderPane root = new BorderPane();
+        root.setStyle("-fx-background-color: #121212;");
+
+        VBox contentBox = new VBox(15);
+        contentBox.setAlignment(Pos.CENTER);
+        contentBox.setPadding(new Insets(40));
+
+        Label titleLabel = new Label("JOURNEY COMPLETED");
+        titleLabel.setStyle("-fx-text-fill: #ffd166; -fx-font-size: 24px; -fx-font-weight: bold;");
+
+        Label descLabel = new Label("You have successfully traversed all 9 Circles of Hell!");
+        descLabel.setStyle("-fx-text-fill: #cccccc; -fx-font-size: 13px; -fx-alignment: center;");
+
+        //Button to restart the game
+        Button restartButton = new Button("Restart");
+        restartButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
+                "-fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;");
+
+        //Action to restart the game and go back to start screen
+        restartButton.setOnAction(e -> {
+            primaryStageRef.getScene().setRoot(createStartRoot());
+        });
+
+        contentBox.getChildren().addAll(titleLabel, descLabel, restartButton);
+        root.setCenter(contentBox);
+
+        return root;
+    }
+
+    /**
      * Creates the main gameplay layout
      */
     private BorderPane createGameRoot() {
@@ -120,7 +153,8 @@ public class MainApp extends Application{
                     updateUI();
                     statusLabel.setText("Object found! Descending to the next Circle...");
                 } else {
-                    statusLabel.setText("You have successfully completed Dante's Inferno! Congrats!");
+                    //completed all the 9 levels of the game -> switch to End Scene
+                    primaryStageRef.getScene().setRoot(createEndRoot());
                 }
             } else {
                 //the player must try again

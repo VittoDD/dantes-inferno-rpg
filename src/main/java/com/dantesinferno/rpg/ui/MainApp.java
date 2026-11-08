@@ -20,7 +20,7 @@ import java.util.Objects;
  * Main JavaFX application entry point for the Dante's Inferno RPG.
  *
  * @author Vittoria Di Domizio
- * @version 2.2
+ * @version 3.0
  */
 
 public class MainApp extends Application{
@@ -38,14 +38,18 @@ public class MainApp extends Application{
         //Initialize backend logic
         gameManager = new GameManager();
 
-        primaryStage.setTitle("Dante's Inferno RPG");
+        primaryStage.setTitle("Dante's Inferno RPG"); }
 
+    /**
+     * Creates the main gameplay layout
+     */
+    private BorderPane createGameRoot() {
         //root layout -> BorderPane with global dark background theme
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: #121212;");
 
         //TOP: Header Bar -> Level Number and Circle Name
-        headerTitleLabel = new Label ();
+        headerTitleLabel = new Label();
         headerTitleLabel.setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 16px; -fx-font-weight: bold;");
 
         StackPane headerPane = new StackPane(headerTitleLabel);
@@ -72,8 +76,8 @@ public class MainApp extends Application{
 
             //verify click coordinates against the backend hitboxes
             boolean hit = gameManager.checkClickCoordinates(clickX, clickY);
-            if(hit) {
-                if (gameManager.getCurrentLevelNumber()<9) {
+            if (hit) {
+                if (gameManager.getCurrentLevelNumber() < 9) {
                     //go to the next level
                     gameManager.nextLevel();
                     updateUI();
@@ -105,8 +109,10 @@ public class MainApp extends Application{
         bottomCard.getChildren().addAll(quoteLabel, statusLabel);
         root.setBottom(bottomCard);
 
+        return root;
+    }
         //Initialize dynamic UI components based on the starting level (Limbo)
-        updateUI();
+        /*updateUI();
 
         //Scene and window configuration
         Scene scene = new Scene(root, 600, 400);
@@ -114,8 +120,8 @@ public class MainApp extends Application{
 
         //Lock window size to 600x400
         primaryStage.setResizable(false);
-        primaryStage.show();
-    }
+        primaryStage.show();*/
+
 
      //Updates UI components by retrieving the current Circle state from the GameManager
 

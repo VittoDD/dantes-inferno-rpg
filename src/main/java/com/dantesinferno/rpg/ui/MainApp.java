@@ -3,15 +3,13 @@ package com.dantesinferno.rpg.ui;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import com.dantesinferno.rpg.manager.GameManager;
 import com.dantesinferno.rpg.model.Circle;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
@@ -51,7 +49,24 @@ public class MainApp extends Application{
      */
     private BorderPane createStartRoot(){
         BorderPane root = new BorderPane();
-        root.setStyle("-fx-background-color: #121212;");
+
+        //Upload background scene
+        try {
+            Image bgImage =
+                    new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/start-scene.jpg")));
+            BackgroundImage backgroundImage = new BackgroundImage(
+                    bgImage,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.CENTER,
+                    //fit the image to the screen size
+                    new BackgroundSize(600, 400, false, false, false, true)
+            );
+            root.setBackground(new Background(backgroundImage));
+        } catch (Exception e) {
+                System.out.println("Warning: could not load start screen image. Falling back to color.");
+                root.setStyle("-fx-background-color: #121212;");
+        }
 
         VBox contentBox = new VBox(15);
         contentBox.setAlignment(Pos.CENTER);

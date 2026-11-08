@@ -2,6 +2,7 @@ package com.dantesinferno.rpg.ui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,19 +32,55 @@ public class MainApp extends Application{
     private GameManager gameManager;
     private StackPane centerInteractiveArea;
     private ImageView backgroundImageView;
+    private Stage primaryStageRef;
 
     @Override
     public void start(Stage primaryStage) {
+        this.primaryStageRef = primaryStage;
+        primaryStage.setTitle("Dante's Inferno RPG");
 
-        //Initialize backend logic
-        gameManager = new GameManager();
+        //Start with the Start Screen Root
+        Scene scene = new Scene(createStartRoot(), 600, 400);
+        primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
+        primaryStage.show();
+         }
 
-        primaryStage.setTitle("Dante's Inferno RPG"); }
+    /**
+     * Creates the start screen layout (Base Version)
+     */
+    private BorderPane createStartRoot(){
+        BorderPane root = new BorderPane();
+        root.setStyle("-fx-background-color: #121212;");
+
+        VBox contentBox = new VBox(15);
+        contentBox.setAlignment(Pos.CENTER);
+        contentBox.setPadding(new Insets(40));
+
+        Label titleLabel = new Label("DANTE'S INFERNO");
+        titleLabel.setStyle("-fx-text-fill: #ffd166; -fx-font-size: 24px; -fx-font-weight: bold;");
+
+        Button startButton = new Button("Start journey");
+        startButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
+                "-fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;");
+
+        //Action button to begin the game
+        startButton.setOnAction(e -> {
+            primaryStageRef.getScene().setRoot(createGameRoot());
+        });
+
+        contentBox.getChildren().addAll(titleLabel, startButton);
+        root.setCenter(contentBox);
+
+        return root;
+    }
 
     /**
      * Creates the main gameplay layout
      */
     private BorderPane createGameRoot() {
+        gameManager = new GameManager();
+
         //root layout -> BorderPane with global dark background theme
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: #121212;");
@@ -109,19 +146,10 @@ public class MainApp extends Application{
         bottomCard.getChildren().addAll(quoteLabel, statusLabel);
         root.setBottom(bottomCard);
 
+        updateUI();
+
         return root;
     }
-        //Initialize dynamic UI components based on the starting level (Limbo)
-        /*updateUI();
-
-        //Scene and window configuration
-        Scene scene = new Scene(root, 600, 400);
-        primaryStage.setScene(scene);
-
-        //Lock window size to 600x400
-        primaryStage.setResizable(false);
-        primaryStage.show();*/
-
 
      //Updates UI components by retrieving the current Circle state from the GameManager
 

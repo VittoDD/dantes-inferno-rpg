@@ -77,11 +77,15 @@ public class MainApp extends Application{
         titleLabel.setLayoutX(165);
         titleLabel.setLayoutY(10);
 
+        //Action button to begin the game -> moved on the Hell's Door in the background
         Button startButton = new Button("Start journey");
-        startButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
-                "-fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;");
+        startButton.setStyle("-fx-background-color: rgba(0, 0, 0, 0.75); -fx-text-fill: white; -fx-font-size: 11px; " +
+                "-fx-font-weight: bold; -fx-padding: 6 14; -fx-border-color: rgba(255, 209, 102, 0.6);" +
+                "-fx-border-width: 1px; -fx-background-radius: 4px; -fx-border-radius: 4px; -fx-cursor: hand; " +
+                "-fx-effect: dropshadow(gaussian, black, 5, 0.7, 0, 2);");
+        startButton.setLayoutX(300);
+        startButton.setLayoutY(210);
 
-        //Action button to begin the game
         startButton.setOnAction(e -> {
             primaryStageRef.getScene().setRoot(createGameRoot());
         });

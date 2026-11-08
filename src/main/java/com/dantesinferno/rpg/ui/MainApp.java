@@ -121,7 +121,24 @@ public class MainApp extends Application{
         speechBubble.setLayoutX(150);
         speechBubble.setLayoutY(325);
 
-        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble);
+        //Insertion and positioning of Dante's avatar
+        ImageView danteAvatar = new ImageView();
+
+        try{
+            Image danteImg =
+                    new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/dante-avatar.png")));
+            danteAvatar.setImage(danteImg);
+            danteAvatar.setFitHeight(200);
+            danteAvatar.setFitWidth(200);
+            danteAvatar.setPreserveRatio(true);
+        } catch(Exception e) {
+            System.out.println("Virgilio's avatar not found");
+        }
+
+        danteAvatar.setLayoutX(330);
+        danteAvatar.setLayoutY(240);
+
+        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar);
 
         return root;
     }

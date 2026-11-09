@@ -62,7 +62,7 @@ public class MainApp extends Application{
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundPosition.CENTER,
                     //fit the image to the screen size
-                    new BackgroundSize(600, 400, false, false, false, true)
+                    new BackgroundSize(100, 100, true, true, true, false)
             );
             root.setBackground(new Background(backgroundImage));
         } catch (Exception e) {
@@ -83,7 +83,7 @@ public class MainApp extends Application{
                 "-fx-font-weight: bold; -fx-padding: 6 14; -fx-border-color: rgba(255, 209, 102, 0.6);" +
                 "-fx-border-width: 1px; -fx-background-radius: 4px; -fx-border-radius: 4px; -fx-cursor: hand; " +
                 "-fx-effect: dropshadow(gaussian, black, 5, 0.7, 0, 2);");
-        startButton.setLayoutX(300);
+        startButton.setLayoutX(230);
         startButton.setLayoutY(210);
 
         startButton.setOnAction(e -> {
@@ -103,8 +103,8 @@ public class MainApp extends Application{
             System.out.println("Virgilio's avatar not found");
         }
 
-        virgilioAvatar.setLayoutX(70);
-        virgilioAvatar.setLayoutY(250);
+        virgilioAvatar.setLayoutX(40);
+        virgilioAvatar.setLayoutY(220);
 
         //box for Virgilio's speech
         VBox speechBubble = new VBox(3);
@@ -118,7 +118,7 @@ public class MainApp extends Application{
 
         speechBubble.getChildren().add(speechLabel);
 
-        speechBubble.setLayoutX(150);
+        speechBubble.setLayoutX(120);
         speechBubble.setLayoutY(325);
 
         /**
@@ -138,7 +138,7 @@ public class MainApp extends Application{
             System.out.println("Virgilio's avatar not found");
         }
 
-        danteAvatar.setLayoutX(330);
+        danteAvatar.setLayoutX(260);
         danteAvatar.setLayoutY(240);
 
         root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar);
@@ -152,6 +152,26 @@ public class MainApp extends Application{
     private AnchorPane createEndRoot(){
         AnchorPane root = new AnchorPane();
         root.setPrefSize(600, 400);
+
+        /**
+         * Add the Paradise background scene
+         */
+
+        try{
+            Image bgImage =
+                    new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/end-scene.jpg")));
+            BackgroundImage backgroundImage = new BackgroundImage(
+                    bgImage,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.CENTER,
+                    new BackgroundSize(600, 400, false, false, false, true)
+            );
+            root.setBackground(new Background(backgroundImage));
+        } catch  (Exception e){
+            System.out.println("Warning: Could not load paradise background image. Falling back to color.");
+            root.setStyle("-fx-background-color: #1e1e2f");
+        }
 
         Label titleLabel = new Label("JOURNEY COMPLETED");
         titleLabel.setStyle("-fx-text-fill: #ffd166; -fx-font-size: 24px; -fx-font-weight: bold;");

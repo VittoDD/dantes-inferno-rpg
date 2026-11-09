@@ -19,7 +19,7 @@ import java.util.Objects;
  * Main JavaFX application entry point for the Dante's Inferno RPG.
  *
  * @author Vittoria Di Domizio
- * @version 3.0
+ * @version 4.0
  */
 
 public class MainApp extends Application{
@@ -45,14 +45,17 @@ public class MainApp extends Application{
          }
 
     /**
-     * Creates the start screen layout (Base Version)
+     * Creates the start screen layout
      */
     private Pane createStartRoot(){
         //Use of AnchorPane to position elements freely and with precision
         AnchorPane root = new AnchorPane();
         root.setPrefSize(600,400);
 
-        //Upload background scene -> Hell's Door
+        /**
+         * Upload background scene -> Hell's Door
+         */
+
         try {
             Image bgImage =
                     new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/start-scene.jpg")));
@@ -69,14 +72,18 @@ public class MainApp extends Application{
                 root.setStyle("-fx-background-color: #121212;");
         }
 
-        //Title moved to the top center
+        /**
+         * Set the title in the Start Scene
+         */
         Label titleLabel = new Label("DANTE'S INFERNO");
         titleLabel.setStyle("-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold; " +
                 "-fx-font-style: italic; -fx-effect: dropshadow(gaussian, black, 8, 0.9, 0, 2)");
         titleLabel.setLayoutX(165);
         titleLabel.setLayoutY(10);
 
-        //Action button to begin the game -> moved on the Hell's Door in the background
+        /**
+         * Action button to begin the game
+         */
         Button startButton = new Button("Start journey");
         startButton.setStyle("-fx-background-color: rgba(0, 0, 0, 0.75); -fx-text-fill: white; -fx-font-size: 11px; " +
                 "-fx-font-weight: bold; -fx-padding: 6 14; -fx-border-color: rgba(255, 209, 102, 0.6);" +
@@ -89,7 +96,9 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createGameRoot());
         });
 
-        //Insertion and positioning of Virgilio's Avatar
+        /**
+         * Insertion of Virgilio's Avatar in the StartScene
+         */
         ImageView virgilioAvatar = new ImageView();
         try{
             Image virgilioImg =
@@ -105,7 +114,9 @@ public class MainApp extends Application{
         virgilioAvatar.setLayoutX(40);
         virgilioAvatar.setLayoutY(220);
 
-        //box for Virgilio's speech
+        /**
+         * Insertion of a box for Virgilio's speech in the Start Scene
+         */
         VBox speechBubble = new VBox(3);
         speechBubble.setPadding(new Insets(6, 10, 6, 10));
         speechBubble.setStyle("-fx-background-color: rgba(240, 240, 240, 0.65); -fx-border-color: #ffd166;" +
@@ -140,7 +151,9 @@ public class MainApp extends Application{
         danteAvatar.setLayoutX(260);
         danteAvatar.setLayoutY(240);
 
-        //add a botton in the first scene to jump directly to the last scene
+        /**
+         * Create a button in the Start Scene to jump directly to the End Scene
+
         Button goEndButton = new Button("GoEnd");
         goEndButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
                 "-fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;");
@@ -148,9 +161,11 @@ public class MainApp extends Application{
         //Action to jump to the end of the game
         goEndButton.setOnAction(e -> {
             primaryStageRef.getScene().setRoot(createEndRoot());
-        });
+        }); */
 
-        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar, goEndButton);
+        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar
+                //,goEndButton
+                );
 
         return root;
     }
@@ -182,6 +197,9 @@ public class MainApp extends Application{
             root.setStyle("-fx-background-color: #1e1e2f");
         }
 
+        /**
+         * Create and set the title in the End Scene
+         */
         Label titleLabel = new Label("JOURNEY COMPLETED");
         titleLabel.setStyle(
                 "-fx-text-fill: ffd700; -fx-font-size: 26px; -fx-font-weight: bold; " +
@@ -189,7 +207,9 @@ public class MainApp extends Application{
         titleLabel.setLayoutX(170);
         titleLabel.setLayoutY(280);
 
-        //Button to restart the game
+        /**
+         * Create a button to restart the game
+         */
         Button restartButton = new Button("Play Again");
         restartButton.setStyle(
                 "-fx-background-color: rgba(42, 157, 143, 0.45); -fx-text-fill: white; -fx-font-size: 14px; " +
@@ -205,7 +225,9 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createStartRoot());
         });
 
-        //Add Virgilio's Avatar
+        /**
+         * Virgilio's Avatar in the End Scene
+         */
         ImageView virgilioAvatar = new ImageView();
         try{
             Image virgilioImg =
@@ -221,7 +243,24 @@ public class MainApp extends Application{
         virgilioAvatar.setLayoutX(10);
         virgilioAvatar.setLayoutY(230);
 
-        root.getChildren().addAll(titleLabel, restartButton, virgilioAvatar);
+        /**
+         * Box for Virgilio's speech
+         */
+        VBox speechBubble = new VBox(3);
+        speechBubble.setPadding(new Insets(6, 10, 6, 10));
+        speechBubble.setStyle("-fx-background-color: rgba(240, 240, 240, 0.65); -fx-border-color: #ffd166;" +
+                "-fx-border-width: 1px; -fx-background-radius: 6px; -fx-border-radius: 6px;");
+        Label speechLabel = new Label("\"Non aspettar mio dir più né mio cenno;\n" +
+                "libero, dritto, sano è tuo arbitrio,\n" +
+                "e fallo fora non fare a suo senno...\"");
+        speechLabel.setStyle("-fx-text-fill: #1a1a1a; -fx-font-size: 10px; -fx-font-style: italic;");
+
+        speechBubble.getChildren().add(speechLabel);
+
+        speechBubble.setLayoutX(100);
+        speechBubble.setLayoutY(325);
+
+        root.getChildren().addAll(titleLabel, restartButton, virgilioAvatar, speechBubble);
 
         return root;
     }
@@ -232,11 +271,17 @@ public class MainApp extends Application{
     private BorderPane createGameRoot() {
         gameManager = new GameManager();
 
-        //root layout -> BorderPane with global dark background theme
+        /**root layout ->
+         * BorderPane with global dark background theme
+         */
+
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: #121212;");
 
-        //TOP: Header Bar -> Level Number and Circle Name
+        /**
+         * TOP: Header Bar -> Level Number and Circle Name
+         */
+
         headerTitleLabel = new Label();
         headerTitleLabel.setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 16px; -fx-font-weight: bold;");
 
@@ -245,7 +290,10 @@ public class MainApp extends Application{
         headerPane.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #333333; -fx-border-width: 0 0 1 0;");
         root.setTop(headerPane);
 
-        //CENTER: Visual Area -> Circle Background Asset
+        /**
+         * CENTER: Visual Area -> Circle Background Asset
+         */
+
         centerInteractiveArea = new StackPane();
         centerInteractiveArea.setStyle("-fx-background-color: #181818;");
 
@@ -254,15 +302,21 @@ public class MainApp extends Application{
         backgroundImageView.setFitWidth(600);
         backgroundImageView.setPreserveRatio(true);
 
-        //Mouse click event listener for direct environment interaction
+        /**
+         * Mouse click event listener for direct environment interaction
+         */
+
         centerInteractiveArea.setOnMouseClicked(event -> {
             double clickX = event.getX();
             double clickY = event.getY();
 
             //print the click's coordinates
-            System.out.println("DEBUG CLICK -> X = " + clickX + " Y = " + clickY);
+            //System.out.println("DEBUG CLICK -> X = " + clickX + " Y = " + clickY);
 
-            //verify click coordinates against the backend hitboxes
+            /**
+             * verify click coordinates against the backend hitboxes
+             */
+
             boolean hit = gameManager.checkClickCoordinates(clickX, clickY);
             if (hit) {
                 if (gameManager.getCurrentLevelNumber() < 9) {
@@ -283,7 +337,10 @@ public class MainApp extends Application{
         centerInteractiveArea.getChildren().add(backgroundImageView);
         root.setCenter(centerInteractiveArea);
 
-        //BOTTOM: Narrative card -> Virgilio's quote and Status Feedback
+        /**
+         * BOTTOM: Narrative card -> Virgilio's quote and Status Feedback
+         */
+
         VBox bottomCard = new VBox(8);
         bottomCard.setPadding(new Insets(15));
         bottomCard.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #333333; -fx-border-width: 1 0 0 0;");
@@ -303,7 +360,9 @@ public class MainApp extends Application{
         return root;
     }
 
-     //Updates UI components by retrieving the current Circle state from the GameManager
+     /**
+      * Updates UI components by retrieving the current Circle state from the GameManager
+      */
 
     private void updateUI() {
         Circle current = gameManager.getCurrentLevel();
@@ -313,7 +372,10 @@ public class MainApp extends Application{
             statusLabel.setText("Observe the environment and click on the mystery object");
         }
 
-        //dinamically load the background image for the current circle
+        /**
+         * dinamically load the background image for the current circle
+         */
+
         try{
             assert current != null;
             String imagePath = current.getImagePath();

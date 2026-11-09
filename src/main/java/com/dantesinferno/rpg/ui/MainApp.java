@@ -121,7 +121,10 @@ public class MainApp extends Application{
         speechBubble.setLayoutX(150);
         speechBubble.setLayoutY(325);
 
-        //Insertion and positioning of Dante's avatar
+        /**
+         * Insertion and positioning of Dante's avatar
+         */
+
         ImageView danteAvatar = new ImageView();
 
         try{
@@ -144,15 +147,11 @@ public class MainApp extends Application{
     }
 
     /**
-     * Creates the end screen layout (base version)
+     * Creates the end screen layout using an AnchorPane
      */
-    private BorderPane createEndRoot(){
-        BorderPane root = new BorderPane();
-        root.setStyle("-fx-background-color: #121212;");
-
-        VBox contentBox = new VBox(15);
-        contentBox.setAlignment(Pos.CENTER);
-        contentBox.setPadding(new Insets(40));
+    private AnchorPane createEndRoot(){
+        AnchorPane root = new AnchorPane();
+        root.setPrefSize(600, 400);
 
         Label titleLabel = new Label("JOURNEY COMPLETED");
         titleLabel.setStyle("-fx-text-fill: #ffd166; -fx-font-size: 24px; -fx-font-weight: bold;");
@@ -170,8 +169,7 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createStartRoot());
         });
 
-        contentBox.getChildren().addAll(titleLabel, descLabel, restartButton);
-        root.setCenter(contentBox);
+        root.getChildren().addAll(titleLabel, descLabel, restartButton);
 
         return root;
     }

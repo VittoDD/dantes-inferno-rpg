@@ -183,22 +183,29 @@ public class MainApp extends Application{
         }
 
         Label titleLabel = new Label("JOURNEY COMPLETED");
-        titleLabel.setStyle("-fx-text-fill: #ffd166; -fx-font-size: 24px; -fx-font-weight: bold;");
-
-        Label descLabel = new Label("You have successfully traversed all 9 Circles of Hell!");
-        descLabel.setStyle("-fx-text-fill: #cccccc; -fx-font-size: 13px; -fx-alignment: center;");
+        titleLabel.setStyle(
+                "-fx-text-fill: ffd700; -fx-font-size: 26px; -fx-font-weight: bold; " +
+                        "-fx-font-style: italic; -fx-effect: dropshadow(gaussian, black, 8, 0.9, 0, 2)");
+        titleLabel.setLayoutX(170);
+        titleLabel.setLayoutY(280);
 
         //Button to restart the game
-        Button restartButton = new Button("Restart");
-        restartButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
-                "-fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;");
+        Button restartButton = new Button("Play Again");
+        restartButton.setStyle(
+                "-fx-background-color: rgba(42, 157, 143, 0.45); -fx-text-fill: white; -fx-font-size: 14px; " +
+                "-fx-font-weight: bold; -fx-padding: 8 20; -fx-cursor: hand; -fx-border-color: ffd166" +
+                "-fx-border-width: 1px; -fx-background-radius: 5px; -fx-border-radius: 5px;" +
+                "-fx-effect: dropshadow(gaussian, black, 5, 0.7, 0, 2);");
+
+        restartButton.setLayoutX(250);
+        restartButton.setLayoutY(200);
 
         //Action to restart the game and go back to start screen
         restartButton.setOnAction(e -> {
             primaryStageRef.getScene().setRoot(createStartRoot());
         });
 
-        root.getChildren().addAll(titleLabel, descLabel, restartButton);
+        root.getChildren().addAll(titleLabel, restartButton);
 
         return root;
     }

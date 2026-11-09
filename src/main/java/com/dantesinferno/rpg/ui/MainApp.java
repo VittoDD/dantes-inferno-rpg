@@ -61,7 +61,6 @@ public class MainApp extends Application{
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundPosition.CENTER,
-                    //fit the image to the screen size
                     new BackgroundSize(100, 100, true, true, true, false)
             );
             root.setBackground(new Background(backgroundImage));
@@ -141,7 +140,17 @@ public class MainApp extends Application{
         danteAvatar.setLayoutX(260);
         danteAvatar.setLayoutY(240);
 
-        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar);
+        //add a botton in the first scene to jump directly to the last scene
+        Button goEndButton = new Button("GoEnd");
+        goEndButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
+                "-fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;");
+
+        //Action to jump to the end of the game
+        goEndButton.setOnAction(e -> {
+            primaryStageRef.getScene().setRoot(createEndRoot());
+        });
+
+        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar, goEndButton);
 
         return root;
     }
@@ -165,7 +174,7 @@ public class MainApp extends Application{
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundRepeat.NO_REPEAT,
                     BackgroundPosition.CENTER,
-                    new BackgroundSize(600, 400, false, false, false, true)
+                    new BackgroundSize(100, 100, true, true, true, false)
             );
             root.setBackground(new Background(backgroundImage));
         } catch  (Exception e){

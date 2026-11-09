@@ -205,7 +205,23 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createStartRoot());
         });
 
-        root.getChildren().addAll(titleLabel, restartButton);
+        //Add Virgilio's Avatar
+        ImageView virgilioAvatar = new ImageView();
+        try{
+            Image virgilioImg =
+                    new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/virgilio-avatar.png")));
+            virgilioAvatar.setImage(virgilioImg);
+            virgilioAvatar.setFitHeight(150);
+            virgilioAvatar.setFitWidth(150);
+            virgilioAvatar.setPreserveRatio(true);
+        } catch (Exception e){
+            System.out.println("Virgilio's avatar not found");
+        }
+
+        virgilioAvatar.setLayoutX(10);
+        virgilioAvatar.setLayoutY(230);
+
+        root.getChildren().addAll(titleLabel, restartButton, virgilioAvatar);
 
         return root;
     }

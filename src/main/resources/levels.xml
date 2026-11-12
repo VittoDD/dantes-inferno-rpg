@@ -3,11 +3,11 @@
 <world>
     <circle number="1">
         <name>Limbo</name>
-        <description> The circle of unbaptized and virtuous pagans. </description>
-        <dangerLevel> 1 </dangerLevel>
-        <virgilioQuote> "Tra ombre di saggi e poeti senza speme, cerca ciò che custodisce la vera sapienza." </virgilioQuote>
-        <targetObject> Ancient Scroll </targetObject>
-        <imagePath> /images/limbo.jpg </imagePath>
+        <description>The circle of unbaptized and virtuous pagans.</description>
+        <dangerLevel>1</dangerLevel>
+        <virgilioQuote>"Tra ombre di saggi e poeti senza speme, cerca ciò che custodisce la vera sapienza."</virgilioQuote>
+        <targetObject>Ancient Scroll</targetObject>
+        <imagePath>/images/limbo.jpg</imagePath>
         <bounds minX="240.0" maxX="290.0" minY="170.0" maxY="220.0"/>
     </circle>
 </world>

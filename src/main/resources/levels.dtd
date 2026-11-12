@@ -1,0 +1,17 @@
+<!ELEMENT world (circle+)>
+<!ELEMENT circle (name, description, dangerLevel, virgilioQuote, targetObject, imagePath, bounds)>
+<!ATTLIST circle number CDATA #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT dangerLevel (#PCDATA)>
+<!ELEMENT virgilioQuote (#PCDATA)>
+<!ELEMENT targetObject (#PCDATA)>
+<!ELEMENT imagePath (#PCDATA)>
+<!ELEMENT bounds EMPTY>
+<!ATTLIST bounds
+    minX CDATA #REQUIRED
+    maxX CDATA #REQUIRED
+    minY CDATA #REQUIRED
+    maxY CDATA #REQUIRED>
+
+

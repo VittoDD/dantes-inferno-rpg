@@ -2,6 +2,7 @@ package com.dantesinferno.rpg.manager;
 
 import com.dantesinferno.rpg.model.Circle;
 import com.dantesinferno.rpg.model.LevelData;
+import com.dantesinferno.rpg.utils.LevelLoader;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * for the Dante's Inferno RPG.
  *
  * @author Vittoria Di Domizio
- * @version 1.2
+ * @version 1.3
  */
 
 public class GameManager {
@@ -17,11 +18,16 @@ public class GameManager {
     private int currentLevelIndex;
 
     /**
-     * Constructs a new GameManager and initializes the 9 levels of Hell.
+     * Constructs a new GameManager and initializes the 9 levels of Hell
+     * loading them from the XML file via LevelLoader
      */
     public GameManager() {
-        this.levels = LevelData.getInfernoCircles();
+        this.levels = LevelLoader.loadLevels();
         this.currentLevelIndex = 0; // Starts at Circle 1 (index 0)
+
+        if(levels.isEmpty()){
+            System.err.println("[GameManager] ALERT: No levels uploaded from the XML file!");
+        }
     }
 
     /**

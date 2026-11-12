@@ -2,6 +2,9 @@ package com.dantesinferno.rpg.utils;
 
 import com.dantesinferno.rpg.model.Circle;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -11,7 +14,7 @@ import java.util.List;
 
 
 public class LevelLoader {
-    private static final String XML_PATH = "levels.xml";
+    private static final String XML_PATH = "src/main/resources/levels.xml";
 
     /**
      * Upload levels from the XML file (initial scheleton with DOM)
@@ -32,9 +35,38 @@ public class LevelLoader {
             Document doc = dBuilder.parse(file);
             doc.getDocumentElement().normalize();
 
-            //TODO: Add parsing logic
+            NodeList circleList = doc.getElementsByTagName("circle");
 
-            System.out.println("[LevelLoader] XML File read correctly.");
+            for(int i = 0; i< circleList.getLength(); i++){
+                Node node = circleList.item(i);
+
+                if(node.getNodeType() == Node.ELEMENT_NODE){
+                    Element element = (Element) node;
+
+                    int number = Integer.parseInt(element.getAttribute("number"));
+                    String name = element.getElementsByTagName("name").item(0).getTextContent();
+                    String description = element.getElementsByTagName("description").item(0).getTextContent();
+                    int dangerLevel = Integer.parseInt(element.getElementsByTagName("dangerLevel").item(0).getTextContent());
+                    String virgilioQuote = element.getElementsByTagName("virgilioQuote").item(0).getTextContent();
+                    String targetObject = element.getElementsByTagName("targetObject").item(0).getTextContent();
+                    String imagePath = element.getElementsByTagName("imagePath").item(0).getTextContent();
+
+                    Element boundsElement = (Element) element.getElementsByTagName("bounds").item(0);
+                    double minX = Double.parseDouble(boundsElement.getAttribute("minX"));
+                    double maxX = Double.parseDouble(boundsElement.getAttribute("maxX"));
+                    double minY = Double.parseDouble(boundsElement.getAttribute("minY"));
+                    double maxY = Double.parseDouble(boundsElement.getAttribute("maxY"));
+
+                    Circle circle = new Circle(number, name, description, dangerLevel, virgilioQuote, targetObject, imagePath,
+                            minX, maxX, minY, maxY);
+
+                    circles.add(circle);
+
+                }
+
+            }
+
+            System.out.println("[LevelLoader] " + circles.size() + "circles uploaded successfully from XML.");
 
         } catch (Exception e){
             System.err.println("[LevelLoader] Error during the parsing of XML File" + e.getMessage());

@@ -66,7 +66,7 @@ public class LevelLoader {
 
             }
 
-            System.out.println("[LevelLoader] " + circles.size() + "circles uploaded successfully from XML.");
+            System.out.println("[LevelLoader] " + circles.size() + " circles uploaded successfully from XML.");
 
         } catch (Exception e){
             System.err.println("[LevelLoader] Error during the parsing of XML File" + e.getMessage());

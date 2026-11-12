@@ -5,7 +5,7 @@
         <name>Limbo</name>
         <description>The circle of unbaptized and virtuous pagans.</description>
         <dangerLevel>1</dangerLevel>
-        <virgilioQuote>"Tra ombre di saggi e poeti senza speme, cerca ciò che custodisce la vera sapienza."</virgilioQuote>
+        <virgilioQuote>Tra ombre di saggi e poeti senza speme, cerca ciò che custodisce la vera sapienza.</virgilioQuote>
         <targetObject>Ancient Scroll</targetObject>
         <imagePath>/images/limbo.jpg</imagePath>
         <bounds minX="240.0" maxX="290.0" minY="170.0" maxY="220.0"/>
@@ -15,7 +15,7 @@
         <name>Lust</name>
         <description>Trapped in a violent, unending storm.</description>
         <dangerLevel>2</dangerLevel>
-        <virgilioQuote>"Dove il vento soffia implacabile e i cuori si sfiorano in eterno, riposa il pegno di un amore perduto."</virgilioQuote>
+        <virgilioQuote>Dove il vento soffia implacabile e i cuori si sfiorano in eterno, riposa il pegno di un amore perduto.</virgilioQuote>
         <targetObject>Broken Medallion</targetObject>
         <imagePath>/images/lust.jpg</imagePath>
         <bounds minX="120.0" maxX="170.0" minY="80.0" maxY="130.0"/>
@@ -25,7 +25,7 @@
         <name>Gluttony</name>
         <description>Wallowing in foul, freezing rain and mud.</description>
         <dangerLevel>3</dangerLevel>
-        <virgilioQuote>"Sotto la pioggia fangosa e l'insaziabile pianto, brilla ciò che non può mai essere colmato."</virgilioQuote>
+        <virgilioQuote>Sotto la pioggia fangosa e l'insaziabile pianto, brilla ciò che non può mai essere colmato.</virgilioQuote>
         <targetObject>Muddy Silver Chalice</targetObject>
         <imagePath>/images/gluttony.jpg</imagePath>
         <bounds minX="123.0" maxX="173.0" minY="121.0" maxY="171.0"/>
@@ -35,7 +35,7 @@
         <name>Greed</name>
         <description>Pushing heavy weights in eternal opposition.</description>
         <dangerLevel>4</dangerLevel>
-        <virgilioQuote>"Chi accumula e chi disperde si scontra senza sosta; cerca il metallo che appesantisce l'anima."</virgilioQuote>
+        <virgilioQuote>Chi accumula e chi disperde si scontra senza sosta; cerca il metallo che appesantisce l'anima.</virgilioQuote>
         <targetObject>Heavy Gold Pouch</targetObject>
         <imagePath>/images/greed.jpg</imagePath>
         <bounds minX="321.0" maxX="371.0" minY="64.0" maxY="114.0"/>
@@ -45,7 +45,7 @@
         <name>Wrath</name>
         <description>Trapped inside burning tombs for eternity.</description>
         <dangerLevel>5</dangerLevel>
-        <virgilioQuote>"Nelle torbide acque dello Stige, dove il fango ribolle di rabbia cieca, si cela un ferro conteso."</virgilioQuote>
+        <virgilioQuote>Nelle torbide acque dello Stige, dove il fango ribolle di rabbia cieca, si cela un ferro conteso.</virgilioQuote>
         <targetObject>Broken Sword Hilt</targetObject>
         <imagePath>/images/wrath.jpg</imagePath>
         <bounds minX="127.0" maxX="177.0" minY="87.0" maxY="137.0"/>
@@ -55,7 +55,7 @@
         <name>HeresyTrapped inside burning tombs for eternity.</name>
         <description>Trapped inside burning tombs for eternity.</description>
         <dangerLevel>6</dangerLevel>
-        <virgilioQuote>"Tra i sepolcri infuocati dove l'orgoglio terreno non si spegne mai, cerca il metallo sigillato che porta il segno di un sangue fiero"</virgilioQuote>
+        <virgilioQuote>Tra i sepolcri infuocati dove l'orgoglio terreno non si spegne mai, cerca il metallo sigillato che porta il segno di un sangue fiero</virgilioQuote>
         <targetObject>Signet ring</targetObject>
         <imagePath>/images/heresy.jpg</imagePath>
         <bounds minX="327.0" maxX="377.0" minY="136.0" maxY="186.0"/>
@@ -65,7 +65,7 @@
         <name>Violence</name>
         <description>Submerged in a river of boiling blood.</description>
         <dangerLevel>7</dangerLevel>
-        <virgilioQuote>"Lungo il fiume di sangue bollente e tra i rami che gemono dolore, si nasconde il segno della violenza."</virgilioQuote>
+        <virgilioQuote>Lungo il fiume di sangue bollente e tra i rami che gemono dolore, si nasconde il segno della violenza.</virgilioQuote>
         <targetObject>Bloody Thorn</targetObject>
         <imagePath>/images/fraud.jpg</imagePath>
         <bounds minX="379.0" maxX="429.0" minY="183.0" maxY="233.0"/>
@@ -75,7 +75,7 @@
         <name>Fraud</name>
         <description>Divided into Malebolge with various torments.</description>
         <dangerLevel>8</dangerLevel>
-        <virgilioQuote>"Nei fossi profondi delle Malebolge, dove l'inganno tesse la sua tela, trova ciò che apre porte proibite."</virgilioQuote>
+        <virgilioQuote>Nei fossi profondi delle Malebolge, dove l'inganno tesse la sua tela, trova ciò che apre porte proibite.</virgilioQuote>
         <targetObject>False Key</targetObject>
         <imagePath>/images/fraud.jpg</imagePath>
         <bounds minX="396.0" maxX="446.0" minY="193.0" maxY="243.0"/>
@@ -85,7 +85,7 @@
         <name>Treachery</name>
         <description>Frozen in the icy expanse of Lake Cocytus.</description>
         <dangerLevel>9</dangerLevel>
-        <virgilioQuote>"Dove il ghiaccio stringe i cuori senza pietà, cerca l'acciaio freddo che trafisse la fiducia"</virgilioQuote>
+        <virgilioQuote>Dove il ghiaccio stringe i cuori senza pietà, cerca l'acciaio freddo che trafisse la fiducia</virgilioQuote>
         <targetObject>Sword in the ice</targetObject>
         <imagePath>/images/treachery.jpg</imagePath>
         <bounds minX="217.0" maxX="267.0" minY="81.0" maxY="131.0"/>

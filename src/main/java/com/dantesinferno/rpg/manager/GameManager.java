@@ -1,7 +1,6 @@
 package com.dantesinferno.rpg.manager;
 
 import com.dantesinferno.rpg.model.Circle;
-import com.dantesinferno.rpg.model.LevelData;
 import com.dantesinferno.rpg.utils.LevelLoader;
 import java.util.List;
 

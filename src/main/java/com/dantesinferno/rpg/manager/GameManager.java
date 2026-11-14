@@ -1,7 +1,10 @@
 package com.dantesinferno.rpg.manager;
 
 import com.dantesinferno.rpg.model.Circle;
+import com.dantesinferno.rpg.model.GameState;
 import com.dantesinferno.rpg.utils.LevelLoader;
+import com.dantesinferno.rpg.utils.SaveManager;
+
 import java.util.List;
 
 /**
@@ -9,7 +12,7 @@ import java.util.List;
  * for the Dante's Inferno RPG.
  *
  * @author Vittoria Di Domizio
- * @version 1.3
+ * @version 1.4
  */
 
 public class GameManager {
@@ -18,14 +21,35 @@ public class GameManager {
 
     /**
      * Constructs a new GameManager and initializes the 9 levels of Hell
-     * loading them from the XML file via LevelLoader
+     * checking for a previously saved game state.
      */
+
     public GameManager() {
         this.levels = LevelLoader.loadLevels();
-        this.currentLevelIndex = 0; // Starts at Circle 1 (index 0)
 
         if(levels.isEmpty()){
             System.err.println("[GameManager] ALERT: No levels uploaded from the XML file!");
+            this.currentLevelIndex = 0;
+            return;
+        }
+
+        //try to upload the saved game state
+        GameState savedState = SaveManager.loadGame();
+        if(savedState != null){
+            //check if the saved index inside of bounds
+            int savedIndex = savedState.getCurrentLevelIndex();
+            if(savedIndex>=0 && savedIndex<=levels.size()){
+                this.currentLevelIndex = savedIndex;
+                System.out.println("[GameManager] Resumed game from level index: " + currentLevelIndex);
+            } else {
+                this.currentLevelIndex = 0;
+                System.out.println("[GameManager] Saved level index out of bounds. Starting from beginning.");
+            }
+        } else {
+            //DEFAULT -> set the first level (Circle 1)
+            this.currentLevelIndex = 0;
+            System.out.println("[GameManager] Starting a new game.");
+
         }
     }
 

@@ -84,16 +84,20 @@ public class GameManager {
     }
 
     /**
-     * Advances to the next level if available.
+     * Advances to the next level if available and automatically save the game state.
      *
      * @return true if advanced successfully, false if the game is already completed.
      */
     public boolean nextLevel() {
         if (currentLevelIndex < levels.size() - 1) {
             currentLevelIndex++;
+            //automatic save of the new game state
+            SaveManager.saveGame(new GameState(currentLevelIndex));
             return true;
         } else {
             currentLevelIndex = levels.size(); // Marks game as completed
+            //Save the actual state, even if the game is completed
+            SaveManager.saveGame(new GameState(currentLevelIndex));
             return false;
         }
     }

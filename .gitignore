@@ -11,3 +11,6 @@ build/
 # System temporary files
 .DS_Store
 Thumbs.db
+
+#Save state game file
+save.json

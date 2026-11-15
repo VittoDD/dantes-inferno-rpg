@@ -82,8 +82,13 @@ public class MainApp extends Application{
         titleLabel.setLayoutY(10);
 
         /**
-         * Action button to begin the game
+         * BUTTONS MANAGEMENT -> Start and Resume
          */
+
+        //Verify if a previous save exists
+        boolean hasSaveFile = java.nio.file.Files.exists(java.nio.file.Path.of("save.json"));
+
+        //Create the start button
         Button startButton = new Button("Start journey");
         startButton.setStyle("-fx-background-color: rgba(0, 0, 0, 0.75); -fx-text-fill: white; -fx-font-size: 11px; " +
                 "-fx-font-weight: bold; -fx-padding: 6 14; -fx-border-color: rgba(255, 209, 102, 0.6);" +
@@ -91,6 +96,15 @@ public class MainApp extends Application{
                 "-fx-effect: dropshadow(gaussian, black, 5, 0.7, 0, 2);");
         startButton.setLayoutX(230);
         startButton.setLayoutY(210);
+
+        //Create the Resume Button
+        Button resumeButton = new Button("Resume journey");
+        resumeButton.setStyle("-fx-background-color: rgba(0, 0, 0, 0.75); -fx-text-fill: white; -fx-font-size: 11px;" +
+                "-fx-font-weight: bold; -fx-padding: 6 14; -fx-border-color: rgba(255, 209, 102, 0.6);"+
+                "-fx-border-width: 1px; -fx-background-radius: 4px; -fx-border-radius: 4px; -fx-cursor: hand;" +
+                "-fx-effect: dropshadow(gaussian, black, 5, 0.7, 0, 2);");
+        resumeButton.setLayoutX(230);
+        resumeButton.setLayoutY(250);
 
         startButton.setOnAction(e -> {
             primaryStageRef.getScene().setRoot(createGameRoot());
@@ -163,7 +177,7 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createEndRoot());
         }); */
 
-        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar
+        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar, resumeButton
                 //,goEndButton
                 );
 

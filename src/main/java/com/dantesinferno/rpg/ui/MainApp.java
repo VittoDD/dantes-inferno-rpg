@@ -118,8 +118,13 @@ public class MainApp extends Application{
             startButton.setLayoutY(210);
         }
 
-
+        //Action for "Start Journey" -> new game: delete any old save files
         startButton.setOnAction(e -> {
+            try{
+                java.nio.file.Files.deleteIfExists(java.nio.file.Path.of("save.json"));
+            } catch (Exception exception) {
+                System.out.println("Could not reset save file: " + exception.getMessage());
+            }
             primaryStageRef.getScene().setRoot(createGameRoot());
         });
 

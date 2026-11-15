@@ -104,7 +104,7 @@ public class MainApp extends Application{
                 "-fx-effect: dropshadow(gaussian, black, 5, 0.7, 0, 2);");
 
         if(hasSaveFile){
-            //if a previous save exsists, set the two buttons in the first scene
+            //if a previous save already exsists, set the two buttons in the first scene
             resumeButton.setLayoutX(230);
             resumeButton.setLayoutY(250);
 
@@ -120,11 +120,8 @@ public class MainApp extends Application{
 
         //Action for "Start Journey" -> new game: delete any old save files
         startButton.setOnAction(e -> {
-            try{
-                java.nio.file.Files.deleteIfExists(java.nio.file.Path.of("save.json"));
-            } catch (Exception exception) {
-                System.out.println("Could not reset save file: " + exception.getMessage());
-            }
+            GameManager gm = new GameManager();
+            gm.resetGame();
             primaryStageRef.getScene().setRoot(createGameRoot());
         });
 
@@ -191,13 +188,13 @@ public class MainApp extends Application{
         /**
          * Create a button in the Start Scene to jump directly to the End Scene
 
-        Button goEndButton = new Button("GoEnd");
-        goEndButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
+        * Button goEndButton = new Button("GoEnd");
+        * goEndButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
                 "-fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;");
 
-        //Action to jump to the end of the game
-        goEndButton.setOnAction(e -> {
-            primaryStageRef.getScene().setRoot(createEndRoot());
+        * Action to jump to the end of the game
+        * goEndButton.setOnAction(e -> {
+        *    primaryStageRef.getScene().setRoot(createEndRoot());
         }); */
 
         root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar
@@ -250,15 +247,17 @@ public class MainApp extends Application{
         Button restartButton = new Button("Play Again");
         restartButton.setStyle(
                 "-fx-background-color: rgba(42, 157, 143, 0.45); -fx-text-fill: white; -fx-font-size: 14px; " +
-                "-fx-font-weight: bold; -fx-padding: 8 20; -fx-cursor: hand; -fx-border-color: ffd166" +
+                "-fx-font-weight: bold; -fx-padding: 8 20; -fx-cursor: hand; -fx-border-color: ffd166;" +
                 "-fx-border-width: 1px; -fx-background-radius: 5px; -fx-border-radius: 5px;" +
                 "-fx-effect: dropshadow(gaussian, black, 5, 0.7, 0, 2);");
 
         restartButton.setLayoutX(250);
         restartButton.setLayoutY(200);
 
-        //Action to restart the game and go back to start screen
+        //Action to restart the game and go back to start screen resecting the game state
         restartButton.setOnAction(e -> {
+            GameManager gm = new GameManager();
+            gm.resetGame();
             primaryStageRef.getScene().setRoot(createStartRoot());
         });
 

@@ -128,6 +128,11 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createGameRoot());
         });
 
+        //Action for "Resume Journey" -> start again from the existing file "save.json"
+        resumeButton.setOnAction(e -> {
+            primaryStageRef.getScene().setRoot(createGameRoot());
+        });
+
         /**
          * Insertion of Virgilio's Avatar in the StartScene
          */

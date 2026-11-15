@@ -67,7 +67,7 @@
         <dangerLevel>7</dangerLevel>
         <virgilioQuote>Lungo il fiume di sangue bollente e tra i rami che gemono dolore, si nasconde il segno della violenza.</virgilioQuote>
         <targetObject>Bloody Thorn</targetObject>
-        <imagePath>/images/fraud.jpg</imagePath>
+        <imagePath>/images/violence.jpg</imagePath>
         <bounds minX="379.0" maxX="429.0" minY="183.0" maxY="233.0"/>
     </circle>
 

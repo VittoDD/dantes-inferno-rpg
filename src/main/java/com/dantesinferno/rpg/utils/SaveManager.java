@@ -57,4 +57,13 @@ public class SaveManager {
             return null;
         }
     }
+
+    public static void deleteSave(){
+        try{
+            java.nio.file.Files.deleteIfExists(java.nio.file.Path.of("save.json"));
+            System.out.println("[SaveManager] Save file deleted.");
+        } catch (Exception e) {
+            System.err.println("[SaveManager] Failed to delete dave file: " + e.getMessage());
+        }
+    }
 }

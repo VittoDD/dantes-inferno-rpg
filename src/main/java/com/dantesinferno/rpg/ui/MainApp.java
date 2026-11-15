@@ -94,8 +94,7 @@ public class MainApp extends Application{
                 "-fx-font-weight: bold; -fx-padding: 6 14; -fx-border-color: rgba(255, 209, 102, 0.6);" +
                 "-fx-border-width: 1px; -fx-background-radius: 4px; -fx-border-radius: 4px; -fx-cursor: hand; " +
                 "-fx-effect: dropshadow(gaussian, black, 5, 0.7, 0, 2);");
-        startButton.setLayoutX(230);
-        startButton.setLayoutY(210);
+
 
         //Create the Resume Button
         Button resumeButton = new Button("Resume journey");
@@ -103,8 +102,22 @@ public class MainApp extends Application{
                 "-fx-font-weight: bold; -fx-padding: 6 14; -fx-border-color: rgba(255, 209, 102, 0.6);"+
                 "-fx-border-width: 1px; -fx-background-radius: 4px; -fx-border-radius: 4px; -fx-cursor: hand;" +
                 "-fx-effect: dropshadow(gaussian, black, 5, 0.7, 0, 2);");
-        resumeButton.setLayoutX(230);
-        resumeButton.setLayoutY(250);
+
+        if(hasSaveFile){
+            //if a previous save exsists, set the two buttons in the first scene
+            resumeButton.setLayoutX(230);
+            resumeButton.setLayoutY(250);
+
+            startButton.setLayoutX(230);
+            startButton.setLayoutY(210);
+
+            root.getChildren().add(resumeButton);
+        } else {
+            //if a previous save doesn't exist, show only the start button
+            startButton.setLayoutX(230);
+            startButton.setLayoutY(210);
+        }
+
 
         startButton.setOnAction(e -> {
             primaryStageRef.getScene().setRoot(createGameRoot());
@@ -177,7 +190,7 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createEndRoot());
         }); */
 
-        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar, resumeButton
+        root.getChildren().addAll(titleLabel, startButton, virgilioAvatar, speechBubble, danteAvatar
                 //,goEndButton
                 );
 

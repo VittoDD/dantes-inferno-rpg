@@ -119,4 +119,9 @@ public class GameManager {
     public int getCurrentLevelNumber() {
         return Math.min(currentLevelIndex + 1, levels.size());
     }
+
+    public void resetGame(){
+        this.currentLevelIndex = 0;
+        SaveManager.deleteSave();
+    }
 }

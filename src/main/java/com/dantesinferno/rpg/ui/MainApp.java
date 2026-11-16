@@ -315,11 +315,19 @@ public class MainApp extends Application{
         root.setStyle("-fx-background-color: #121212;");
 
         /**
-         * TOP: Header Bar -> Level Number and Circle Name
+         * TOP: Header Bar -> Level Number, Circle Name and Exit button
          */
 
         headerTitleLabel = new Label();
         headerTitleLabel.setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 16px; -fx-font-weight: bold;");
+
+        //creation of the exit button
+        Button exitButton = new Button("Exit");
+        exitButton.setStyle("-fx-background-color: linear-gradient(to bottom, #e63946, #9b111e); " +
+                "-fx-text-fill: white; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 4 12; -fx-cursor: hand; " +
+                "-fx-background-radius: 4px; -fx-border-color: rgba(255,209,102,0.3); -fx-border-radius: 4px; " +
+                "-fx-border-width: 1px; -fx-effect: dropshadow(gaussian, black, 3, 0.5, 0, 1);"
+        );
 
         StackPane headerPane = new StackPane(headerTitleLabel);
         headerPane.setPadding(new Insets(15));

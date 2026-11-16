@@ -329,6 +329,11 @@ public class MainApp extends Application{
                 "-fx-border-width: 1px; -fx-effect: dropshadow(gaussian, black, 3, 0.5, 0, 1);"
         );
 
+        //Action for the exit button -> go to the first scene
+        exitButton.setOnAction( e -> {
+            primaryStageRef.getScene().setRoot(createStartRoot());
+        });
+
         StackPane headerPane = new StackPane(headerTitleLabel);
         headerPane.setPadding(new Insets(15));
         headerPane.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #333333; -fx-border-width: 0 0 1 0;");

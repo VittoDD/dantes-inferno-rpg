@@ -1,5 +1,6 @@
 package com.dantesinferno.rpg.manager;
 
+import com.dantesinferno.rpg.utils.SaveManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * and 2D coordinate click hit-detection.
  *
  * @author Vittoria Di Domizio
- * @version 1.1
+ * @version 1.2
  */
 
 public class GameManagerTest {
@@ -17,7 +18,11 @@ public class GameManagerTest {
 
     @BeforeEach
     public void setUp() {
-        // Initialize a fresh GameManager instance before each test
+        // Cleans up any existing save file beforehand to ensure that the test always starts from
+        //a clean environment (Level 1 - Limbo)
+        SaveManager.deleteSave();
+
+        //Initialize a fresh GameManager instance before each test
         gameManager = new GameManager();
     }
 

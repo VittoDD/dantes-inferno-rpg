@@ -21,7 +21,7 @@ public class LevelLoaderTest {
         assertEquals(1, firstCircle.getNumber(), "Circle's number has to be 1");
         assertEquals("Limbo", firstCircle.getName(), "Circle's name has to be Limbo");
         assertEquals(1, firstCircle.getDangerLevel(), "Circle's dangerLevel has to be 1");
-        assertEquals("\"Tra ombre di saggi e poeti senza speme, cerca ciò che custodisce la vera sapienza.\"",
+        assertEquals("Tra ombre di saggi e poeti senza speme, cerca ciò che custodisce la vera sapienza.",
                 firstCircle.getVirgilioQuote(), "Virgilio's quote is wrong");
 
         //Verifies spacial bounds

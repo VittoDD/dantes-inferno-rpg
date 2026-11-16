@@ -334,8 +334,16 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createStartRoot());
         });
 
-        StackPane headerPane = new StackPane(headerTitleLabel);
-        headerPane.setPadding(new Insets(15));
+        StackPane headerPane = new StackPane();
+
+        HBox exitButtonContainer = new HBox(exitButton);
+        exitButtonContainer.setAlignment(Pos.CENTER_LEFT);
+
+        headerPane.getChildren().addAll(exitButtonContainer, headerTitleLabel);
+        StackPane.setAlignment(headerTitleLabel, Pos.CENTER);
+        StackPane.setAlignment(exitButtonContainer, Pos.CENTER_LEFT);
+
+        headerPane.setPadding(new Insets(12, 15, 12, 15));
         headerPane.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #333333; -fx-border-width: 0 0 1 0;");
         root.setTop(headerPane);
 
@@ -344,7 +352,7 @@ public class MainApp extends Application{
          */
 
         centerInteractiveArea = new StackPane();
-        centerInteractiveArea.setStyle("-fx-background-color: #181818;");
+        centerInteractiveArea.setStyle("-fx-background-color: #181818; -fx-cursor: hand;");
 
         backgroundImageView = new ImageView();
         backgroundImageView.setFitHeight(260);

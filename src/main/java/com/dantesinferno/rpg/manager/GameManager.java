@@ -33,10 +33,10 @@ public class GameManager {
             return;
         }
 
-        //try to upload the saved game state
+        //try to load the saved game state
         GameState savedState = SaveManager.loadGame();
         if(savedState != null){
-            //check if the saved index inside of bounds
+            //check if the saved index is within bounds
             int savedIndex = savedState.getCurrentLevelIndex();
             if(savedIndex>=0 && savedIndex<=levels.size()){
                 this.currentLevelIndex = savedIndex;
@@ -84,7 +84,7 @@ public class GameManager {
     }
 
     /**
-     * Advances to the next level if available and automatically save the game state.
+     * Advances to the next level if available and automatically saves the game state.
      *
      * @return true if advanced successfully, false if the game is already completed.
      */
@@ -119,6 +119,10 @@ public class GameManager {
     public int getCurrentLevelNumber() {
         return Math.min(currentLevelIndex + 1, levels.size());
     }
+
+    /**
+     * Resets the game progression back to the first level and deletes the save file.
+     */
 
     public void resetGame(){
         this.currentLevelIndex = 0;

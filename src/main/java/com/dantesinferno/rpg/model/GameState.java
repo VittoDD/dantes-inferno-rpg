@@ -27,11 +27,20 @@ public class GameState {
         this.currentLevelIndex = currentLevelIndex;
     }
 
-    //getter and setter methods
+    /**
+     * Gets the current active level index.
+     *
+     * @return The level index integer.
+     */
     public int getCurrentLevelIndex(){
         return currentLevelIndex;
     }
 
+    /**
+     * Sets the current active level index.
+     *
+     * @param currentLevelIndex The new level index to set.
+     */
     public void setCurrentLevelIndex(int currentLevelIndex){
         this.currentLevelIndex = currentLevelIndex;
     }

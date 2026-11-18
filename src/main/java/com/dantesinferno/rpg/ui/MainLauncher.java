@@ -8,6 +8,16 @@ package com.dantesinferno.rpg.ui;
  */
 
 public class MainLauncher {
+    /**
+     * Default public constructor for MainLauncher.
+     */
+    public MainLauncher(){};
+
+    /**
+     * Application launcher main method.
+     *
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
         MainApp.main(args);
     }

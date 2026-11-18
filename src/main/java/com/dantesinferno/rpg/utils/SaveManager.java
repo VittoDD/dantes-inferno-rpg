@@ -18,6 +18,12 @@ import java.nio.file.Path;
  */
 
 public class SaveManager {
+
+    /**
+     * Private constructor to prevent instantiation of utility class.
+     */
+    private SaveManager(){};
+
     private static final String SAVE_FILE_PATH = "save.json";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -58,6 +64,9 @@ public class SaveManager {
         }
     }
 
+    /**
+     * Deletes the existing save file if present.
+     */
     public static void deleteSave(){
         try{
             java.nio.file.Files.deleteIfExists(java.nio.file.Path.of("save.json"));

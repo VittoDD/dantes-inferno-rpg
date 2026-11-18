@@ -54,47 +54,103 @@ public class Circle {
         this.maxY = maxY;
     }
 
-    //getter methods
+    /**
+     * Gets the circle number.
+     *
+     * @return The circle number (1 to 9).
+     */
     public int getNumber() {
         return number;
     }
+
+    /**
+     * Gets the name of the circle.
+     *
+     * @return The circle name.
+     */
 
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the description of the circle and its punishment.
+     *
+     * @return The circle description.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Gets the danger/difficulty level of the circle.
+     *
+     * @return The danger level integer.
+     */
     public int getDangerLevel() {
         return dangerLevel;
     }
 
+    /**
+     * Gets Virgilio's quote or hint for the level.
+     *
+     * @return Virgilio's quote string.
+     */
     public String getVirgilioQuote(){
         return virgilioQuote;
     }
 
+    /**
+     * Gets the target object that the player must find to complete the level.
+     *
+     * @return The target object name.
+     */
     public String getTargetObject(){
         return targetObject;
     }
 
+    /**
+     * Gets the resource path for the circle's background image.
+     *
+     * @return The image path string.
+     */
     public String getImagePath() {
         return imagePath;
     }
+
+    /**
+     * Gets the minimum X boundary of the target hitbox.
+     *
+     * @return Minimum X coordinate.
+     */
 
     public double getMinX() {
         return minX;
     }
 
+    /**
+     * Gets the maximum X boundary of the target hitbox.
+     *
+     * @return Maximum X coordinate.
+     */
     public double getMaxX() {
         return maxX;
     }
 
+    /**
+     * Gets the minimum Y boundary of the target hitbox.
+     *
+     * @return Minimum Y coordinate.
+     */
     public double getMinY() {
         return minY;
     }
 
+    /**
+     * Gets the maximum Y boundary of the target hitbox.
+     *
+     * @return Maximum Y coordinate.
+     */
     public double getMaxY() {
         return maxY;
     }
@@ -104,7 +160,7 @@ public class Circle {
      *
      * @param x Click X coordinate relative to the image
      * @param y Click Y coordinate relative to the image
-     * @return true if the click is within boundaries
+     * @return true if the click is within boundaries, false otherwise
      */
     public boolean contains(double x, double y) {
         return (x >= minX && x <= maxX && y >= minY && y <= maxY);

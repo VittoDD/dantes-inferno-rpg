@@ -24,6 +24,11 @@ import java.util.Objects;
 
 public class MainApp extends Application{
 
+    /**
+     * Default public constructor for MainApp.
+     */
+    public MainApp(){};
+
     private Label headerTitleLabel;
     private Label quoteLabel;
     private Label statusLabel;
@@ -45,7 +50,9 @@ public class MainApp extends Application{
          }
 
     /**
-     * Creates the start screen layout
+     * Creates the start screen layout.
+     *
+     * @return The Pane representing the start screen root layout.
      */
     private Pane createStartRoot(){
         //Use of AnchorPane to position elements freely and with precision
@@ -72,20 +79,15 @@ public class MainApp extends Application{
                 root.setStyle("-fx-background-color: #121212;");
         }
 
-        /**
-         * Set the title in the Start Scene
-         */
+
+        //Set the title in the Start Scene
         Label titleLabel = new Label("DANTE'S INFERNO");
         titleLabel.setStyle("-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold; " +
                 "-fx-font-style: italic; -fx-effect: dropshadow(gaussian, black, 8, 0.9, 0, 2)");
         titleLabel.setLayoutX(165);
         titleLabel.setLayoutY(10);
 
-        /**
-         * BUTTONS MANAGEMENT -> Start and Resume
-         */
-
-        //Verify if a previous save exists
+        //BUTTONS MANAGEMENT -> Start and Resume
         boolean hasSaveFile = java.nio.file.Files.exists(java.nio.file.Path.of("save.json"));
 
         //Create the start button
@@ -104,7 +106,6 @@ public class MainApp extends Application{
                 "-fx-effect: dropshadow(gaussian, black, 5, 0.7, 0, 2);");
 
         if(hasSaveFile){
-            //if a previous save already exsists, set the two buttons in the first scene
             resumeButton.setLayoutX(230);
             resumeButton.setLayoutY(250);
 
@@ -113,7 +114,6 @@ public class MainApp extends Application{
 
             root.getChildren().add(resumeButton);
         } else {
-            //if a previous save doesn't exist, show only the start button
             startButton.setLayoutX(230);
             startButton.setLayoutY(210);
         }
@@ -130,9 +130,7 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createGameRoot());
         });
 
-        /**
-         * Insertion of Virgilio's Avatar in the StartScene
-         */
+        //Insertion of Virgilio's Avatar in the StartScene
         ImageView virgilioAvatar = new ImageView();
         try{
             Image virgilioImg =
@@ -148,9 +146,9 @@ public class MainApp extends Application{
         virgilioAvatar.setLayoutX(40);
         virgilioAvatar.setLayoutY(220);
 
-        /**
-         * Insertion of a box for Virgilio's speech in the Start Scene
-         */
+
+        //Insertion of a box for Virgilio's speech in the Start Scene
+
         VBox speechBubble = new VBox(3);
         speechBubble.setPadding(new Insets(6, 10, 6, 10));
         speechBubble.setStyle("-fx-background-color: rgba(240, 240, 240, 0.65); -fx-border-color: #ffd166;" +
@@ -165,10 +163,7 @@ public class MainApp extends Application{
         speechBubble.setLayoutX(120);
         speechBubble.setLayoutY(325);
 
-        /**
-         * Insertion and positioning of Dante's avatar
-         */
-
+        //Insertion and positioning of Dante's avatar
         ImageView danteAvatar = new ImageView();
 
         try{
@@ -185,11 +180,11 @@ public class MainApp extends Application{
         danteAvatar.setLayoutX(260);
         danteAvatar.setLayoutY(240);
 
-        /**
-         * Create a button in the Start Scene to jump directly to the End Scene
 
-        * Button goEndButton = new Button("GoEnd");
-        * goEndButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
+        /* Create a button in the Start Scene to jump directly to the End Scene
+
+        //Button goEndButton = new Button("GoEnd");
+        goEndButton.setStyle("-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; " +
                 "-fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;");
 
         * Action to jump to the end of the game
@@ -205,16 +200,15 @@ public class MainApp extends Application{
     }
 
     /**
-     * Creates the end screen layout using an AnchorPane
+     * Creates the end screen layout using an AnchorPane.
+     *
+     * @return The AnchorPane representing the completion screen root layout.
      */
     private AnchorPane createEndRoot(){
         AnchorPane root = new AnchorPane();
         root.setPrefSize(600, 400);
 
-        /**
-         * Add the Paradise background scene
-         */
-
+         //Add the Paradise background scene
         try{
             Image bgImage =
                     new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/end-scene.jpg")));
@@ -231,9 +225,7 @@ public class MainApp extends Application{
             root.setStyle("-fx-background-color: #1e1e2f");
         }
 
-        /**
-         * Create and set the title in the End Scene
-         */
+         //Create and set the title in the End Scene
         Label titleLabel = new Label("JOURNEY COMPLETED");
         titleLabel.setStyle(
                 "-fx-text-fill: ffd700; -fx-font-size: 26px; -fx-font-weight: bold; " +
@@ -241,9 +233,7 @@ public class MainApp extends Application{
         titleLabel.setLayoutX(170);
         titleLabel.setLayoutY(280);
 
-        /**
-         * Create a button to restart the game
-         */
+        //Create a button to restart the game
         Button restartButton = new Button("Play Again");
         restartButton.setStyle(
                 "-fx-background-color: rgba(42, 157, 143, 0.45); -fx-text-fill: white; -fx-font-size: 14px; " +
@@ -261,9 +251,7 @@ public class MainApp extends Application{
             primaryStageRef.getScene().setRoot(createStartRoot());
         });
 
-        /**
-         * Virgilio's Avatar in the End Scene
-         */
+        //Virgilio's Avatar in the End Scene
         ImageView virgilioAvatar = new ImageView();
         try{
             Image virgilioImg =
@@ -279,9 +267,7 @@ public class MainApp extends Application{
         virgilioAvatar.setLayoutX(10);
         virgilioAvatar.setLayoutY(230);
 
-        /**
-         * Box for Virgilio's speech
-         */
+        //Box for Virgilio's speech
         VBox speechBubble = new VBox(3);
         speechBubble.setPadding(new Insets(6, 10, 6, 10));
         speechBubble.setStyle("-fx-background-color: rgba(240, 240, 240, 0.65); -fx-border-color: #ffd166;" +
@@ -303,25 +289,20 @@ public class MainApp extends Application{
 
     /**
      * Creates the main gameplay layout
+     *
+     * @return The BorderPane representing the primary gameplay root layout.
      */
     private BorderPane createGameRoot() {
         gameManager = new GameManager();
 
-        /**root layout ->
-         * BorderPane with global dark background theme
-         */
-
+        //Root layout -> BorderPane with global dark background theme
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: #121212;");
 
-        /**
-         * TOP: Header Bar -> Level Number, Circle Name and Exit button
-         */
-
+        //TOP: Header Bar -> Level Number, Circle Name and Exit button
         headerTitleLabel = new Label();
         headerTitleLabel.setStyle("-fx-text-fill: #e0e0e0; -fx-font-size: 16px; -fx-font-weight: bold;");
 
-        //creation of the exit button
         Button exitButton = new Button("Exit");
         exitButton.setStyle("-fx-background-color: linear-gradient(to bottom, #e63946, #9b111e); " +
                 "-fx-text-fill: white; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 4 12; -fx-cursor: hand; " +
@@ -329,13 +310,12 @@ public class MainApp extends Application{
                 "-fx-border-width: 1px; -fx-effect: dropshadow(gaussian, black, 3, 0.5, 0, 1);"
         );
 
-        //Action for the exit button -> go to the first scene
+        //Action for the exit button -> go to the start scene
         exitButton.setOnAction( e -> {
             primaryStageRef.getScene().setRoot(createStartRoot());
         });
 
         StackPane headerPane = new StackPane();
-
         HBox exitButtonContainer = new HBox(exitButton);
         exitButtonContainer.setAlignment(Pos.CENTER_LEFT);
 
@@ -347,10 +327,7 @@ public class MainApp extends Application{
         headerPane.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #333333; -fx-border-width: 0 0 1 0;");
         root.setTop(headerPane);
 
-        /**
-         * CENTER: Visual Area -> Circle Background Asset
-         */
-
+        //CENTER: Visual Area -> Circle Background Asset
         centerInteractiveArea = new StackPane();
         centerInteractiveArea.setStyle("-fx-background-color: #181818; -fx-cursor: hand;");
 
@@ -359,10 +336,7 @@ public class MainApp extends Application{
         backgroundImageView.setFitWidth(600);
         backgroundImageView.setPreserveRatio(true);
 
-        /**
-         * Mouse click event listener for direct environment interaction
-         */
-
+        //Mouse click event listener for direct environment interaction
         centerInteractiveArea.setOnMouseClicked(event -> {
             double clickX = event.getX();
             double clickY = event.getY();
@@ -370,23 +344,17 @@ public class MainApp extends Application{
             //print the click's coordinates
             //System.out.println("DEBUG CLICK -> X = " + clickX + " Y = " + clickY);
 
-            /**
-             * verify click coordinates against the backend hitboxes
-             */
-
+            //Verify click coordinates against the backend hitboxes
             boolean hit = gameManager.checkClickCoordinates(clickX, clickY);
             if (hit) {
                 if (gameManager.getCurrentLevelNumber() < 9) {
-                    //go to the next level
                     gameManager.nextLevel();
                     updateUI();
                     statusLabel.setText("Object found! Descending to the next Circle...");
                 } else {
-                    //completed all the 9 levels of the game -> switch to End Scene
                     primaryStageRef.getScene().setRoot(createEndRoot());
                 }
             } else {
-                //the player must try again
                 statusLabel.setText("Nothing here... Search deeper in the shadows...");
             }
         });
@@ -394,10 +362,7 @@ public class MainApp extends Application{
         centerInteractiveArea.getChildren().add(backgroundImageView);
         root.setCenter(centerInteractiveArea);
 
-        /**
-         * BOTTOM: Narrative card -> Virgilio's quote and Status Feedback
-         */
-
+        //BOTTOM: Narrative card -> Virgilio's quote and Status Feedback
         VBox bottomCard = new VBox(8);
         bottomCard.setPadding(new Insets(15));
         bottomCard.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #333333; -fx-border-width: 1 0 0 0;");
@@ -429,10 +394,7 @@ public class MainApp extends Application{
             statusLabel.setText("Observe the environment and click on the mystery object");
         }
 
-        /**
-         * dinamically load the background image for the current circle
-         */
-
+        //Dinamically load the background image for the current circle
         try{
             assert current != null;
             String imagePath = current.getImagePath();
@@ -443,6 +405,11 @@ public class MainApp extends Application{
         }
     }
 
+    /**
+     * Application entry point.
+     *
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }

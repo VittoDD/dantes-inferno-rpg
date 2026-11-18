@@ -12,12 +12,25 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Utility class responsible for parsing the XML level configuration file and instantiating the circles of Hell.
+ *
+ * @author Vittoria Di Domizio
+ * @version 1.2
+ */
 public class LevelLoader {
+
+    /**
+     * Private constructor to prevent instantiation of utility class.
+     */
+    private LevelLoader(){};
+
     private static final String XML_PATH = "src/main/resources/levels.xml";
 
     /**
-     * Upload levels from the XML file (initial scheleton with DOM)
+     * Loads and parses levels from the XML configuration file using the DOM parser.
+     *
+     * @return A list of Circle objects representing the levels of Hell.
      */
 
     public static List<Circle> loadLevels(){

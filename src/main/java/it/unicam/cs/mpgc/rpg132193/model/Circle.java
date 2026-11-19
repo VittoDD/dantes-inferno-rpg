@@ -1,4 +1,4 @@
-package com.dantesinferno.rpg.model;
+package it.unicam.cs.mpgc.rpg132193.model;
 
 /**
  * Represents a Circle of Hell in the Dante's Inferno RPG.

@@ -1,9 +1,9 @@
-package com.dantesinferno.rpg.manager;
+package it.unicam.cs.mpgc.rpg132193.manager;
 
-import com.dantesinferno.rpg.model.Circle;
-import com.dantesinferno.rpg.model.GameState;
-import com.dantesinferno.rpg.utils.LevelLoader;
-import com.dantesinferno.rpg.utils.SaveManager;
+import it.unicam.cs.mpgc.rpg132193.model.Circle;
+import it.unicam.cs.mpgc.rpg132193.model.GameState;
+import it.unicam.cs.mpgc.rpg132193.utils.LevelLoader;
+import it.unicam.cs.mpgc.rpg132193.utils.SaveManager;
 
 import java.util.List;
 

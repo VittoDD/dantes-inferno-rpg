@@ -10,7 +10,7 @@ java {
     }
 }
 
-group = 'com.dantesinferno.rpg'
+group = 'it.unicam.cs.mpgc.rpg132193'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -29,7 +29,7 @@ javafx {
 }
 
 application {
-    mainClass = 'com.dantesinferno.rpg.ui.MainLauncher'
+    mainClass = 'it.unicam.cs.mpgc.rpg132193.ui.MainLauncher'
 }
 
 test {

@@ -1,6 +1,6 @@
-package com.dantesinferno.rpg.manager;
+package it.unicam.cs.mpgc.rpg132193.manager;
 
-import com.dantesinferno.rpg.utils.SaveManager;
+import it.unicam.cs.mpgc.rpg132193.utils.SaveManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

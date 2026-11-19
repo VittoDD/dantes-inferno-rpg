@@ -1,4 +1,4 @@
-package com.dantesinferno.rpg.ui;
+package it.unicam.cs.mpgc.rpg132193.ui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import com.dantesinferno.rpg.manager.GameManager;
-import com.dantesinferno.rpg.model.Circle;
+import it.unicam.cs.mpgc.rpg132193.manager.GameManager;
+import it.unicam.cs.mpgc.rpg132193.model.Circle;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 

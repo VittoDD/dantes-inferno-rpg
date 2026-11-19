@@ -1,4 +1,4 @@
-package com.dantesinferno.rpg.ui;
+package it.unicam.cs.mpgc.rpg132193.ui;
 
 /**
  * Main entry point to bypass JavaFX module runtime restrictions in Java 25.

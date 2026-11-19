@@ -1,6 +1,6 @@
-package com.dantesinferno.rpg.utils;
+package it.unicam.cs.mpgc.rpg132193.utils;
 
-import com.dantesinferno.rpg.model.Circle;
+import it.unicam.cs.mpgc.rpg132193.model.Circle;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

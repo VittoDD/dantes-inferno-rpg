@@ -1,6 +1,6 @@
-package com.dantesinferno.rpg.utils;
+package it.unicam.cs.mpgc.rpg132193.utils;
 
-import com.dantesinferno.rpg.model.GameState;
+import it.unicam.cs.mpgc.rpg132193.model.GameState;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

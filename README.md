@@ -1,73 +1,74 @@
 # Dante's Inferno RPG
 
-An interactive Dante's Inferno themed desktop RPG application,
-developed in **Java25** and **JavaFX 21**, guiding the player 
-through the nine circle of Hell. The project is designed and 
-implemented following principles like **Clean Architecture**, 
-**Clean Code** practices, XML/DTD level configuration, JSON-based
-data persistence via **Gson**, automated Unit Testing, and Git 
-workflow, using isolated branches and atomic commits.
+A desktop JavaFX application implementing a narrative role-playing 
+adventure inspired by Dante's Nine Circles of Hell. The project combines 
+an interactive 2D coordinate-based graphical interface with data 
+persistence (XML level loading and JSON game-state saving via Google Gson), 
+structured with modular packages (`it.unicam.cs.mpgc.rpg132193`) and 
+object-oriented design.
 
-## Key Features
-- **Clean Architecture & Clean Code**: Strict separation of concerns between
-the UI presentation layer ('MainApp'), domain models ('model')
-and the backend business logic ('GameManager', 'SaveManager', 'LevelLoader'),
-combined with readable, maintenable, and self-documenting code standards;
-- **Data-Driven Level Configuration (XML & DTD)**: Circle definitions, 
-descriptions and hitbox boundaries are externalized in an XML file
-validated against a custom DTD schema
-- **Persistence System**: Automatic saving and loading of game
-state in a structured JSON file ('save.json');
-- **Dynamic Start/Resume flow**: Intelligent start screen detecting
-existing save states, allowing players to start a fresh game or 
-resume their journey;
-- **UI (JavaFX)**: the style of the game implemented with gradient
-buttons, dynamic gameplay header with level indicators, and a
-quick exit button;
-- **Unit Testing**: Comprehensive JUnit 5 test suite verifying 
-level progression logic and 2D coordinate click hit-detection
-('GameManagerTest') and XML parsing/loading integrity ('LevelLoaderTest').
+## How to run the project
+### Prerequisites
+- **Java25 (LTS)**
+- **Gradle** (or the Gradle Wrapper included in the repository)
 
-## Tech Stack and Tooling
-- **Language**: Java25
-- **UI Framework**: JavaFX 21
-- **Build and Dependency Management**: Gradle 8.14 (via Gradle Wrapper)
-- **Data & Persistence**: XML/DTD, Google Gson
-- **Testing**: JUnit 5
 
-## Prerequisites
-Ensure you have the following installed on your system:
-- **JDK 25** (or compatible)
-- *(No global Gradle installation required - the project includes the Gradle Wrapper)*
+### Instructions
+```bash
+git clone https://github.com/VittoDD/dantes-inferno-rpg.git
+cd dantes-inferno-rpg
+```
 
-## Getting Started
-Clone the repository, navigate to the project root directory,
-and use the Gradle Wrapper commands for your terminal:
+## Build the project
+To compile the project and execute the JUnit tests: 
+- *Linux/macOS*: 
+```bash
+  ./gradlew build
+```
+- *Windows*: 
+```bash
+  ./gradlew.bat build
+```
 
-### On Windows:
-1. **Build the project**: './gradlew.bat build'
-2. **Run unit tests**: './gradlew.bat test'
-3. **Run the game**: './gradlew.bat run'
+## Execution
+To launch the JavaFX desktop application:
+- *Linux/macOS*: 
+```bash
+./gradlew run
+```
+- *Windows*: 
+```bash
+./gradlew.bat run
+```
 
-### On macOS / Linux
-1. **Build the project**: './gradlew build'
-2. **Run unit tests**: './gradlew test'
-3. **Run the game**: './gradlew run'
+## Use of AI Tools
+AI tools were used with the purpose of supporting learning, speeding up
+routine tasks and brainstorming creative/gameplay elements while maintaining
+full personal control over the implementation.
 
-## Project Structure
-Source code is structured according to the separation of
-responsibilities:
-- 'com.dantesinferno.rpg.model': defines the core domain entities
-and level data structures;
-- 'com.dantesinferno.rpg.manager': manages game state, circle progression
-and core business logic ('GameManager');
-- 'com.dantesinferno.rpg.ui': manages JavaFX graphical interfaces,
-    scenes, styling and transitions ('MainApp');
-- 'com.dantesinferno.rpg.utils': handles JSON serialization/deserialization
-and file persistence via Gson ('SaveManager').
-- 'src/main/recources': contains project assets, including the circle
-background images, the XML level definitions, and the corresponding
-DTD validation schema.
+*Use of Gemini* for generating background images for 
+the various game screens, brainstorming Virgil's 
+hints/quotes, and selecting hidden objects for the 
+background gameplay.
 
-## Author
-**Vittoria Di Domizio**
+*Use of Copilot* for generating repetitive methods 
+(such as getters and setters) and utility methods 
+(like toString).
+
+*Use of ChatGPT* for clarifying JavaFX core concepts, 
+UI components, and the layout commands needed for the 
+desktop frontend interface.
+
+## Level of personal intervention 
+All generated code, assets, and content were personally 
+reviewed, integrated, tested, and adapted to fit 
+the project architecture.
+The AI was employed strictly as a supportive tool to 
+accelerate development and deepen technical understanding 
+of JavaFX, ensuring full personal comprehension and 
+control over the codebase.
+
+*For full architectural details, class responsibilities, data persistence, 
+extensibility mechanisms, and a detailed AI usage report, please refer to the Wiki
+in this repository.*
+
